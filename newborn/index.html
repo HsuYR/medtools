@@ -1,265 +1,199 @@
 <!DOCTYPE html>
+<html>
 <head>
-    <meta name="language" content="ES">
     <meta charset="utf-8" /> 
+    <meta lang>
     <link href='main.css' rel='stylesheet'>
 </head>
 <body>
     <form id="baby-data">
+        <h1>Baby Info</h1>
         <div>
-        <h1>Patient Info</h1>
             <label for="baby-name">Baby's Name:</label>
             <input type="text" id="baby-name" name="baby-name">
-            <label for="bdatetime">Date and Time of Birth:</label>
-            <input type="datetime-local" id="bdatetime" name="bdatetime">
+        </div>
+        <div>
+            <label for="bdate">Date of Birth:</label>
+            <input type="date" id="bdate" name="bdate">
+            <label for="btime">Time of Birth:</label>
+            <input type="time" id="btime" name="btime">
+        </div>
+        <div>
+            <label for="sex">Sex:</label>
+            <select id="sex" name="sex">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+        <div>
+            <label for="gaWk">Gestational Age:</label>
+            <input type="number" id="gaWk" name="gaWk" value="40">+
+            <input type="number" id="gaDay" name="gaDay">
+        </div>
+
+        <h1>Mother Info</h1>
+        <div>
+            <label for="mom-name">Mother's Name:</label>
+            <input type="text" id="mom-name" name="mom-name">
+        </div>
+        <div>
+            <label for="mom-age">Age:</label>
+            <input type="number" id="mom-age" name="mom-age">
+        </div>
+        <div>
+            <label for="mom-grav">Birth History: </label>
+            G: <input type="number" id="mom-grav" name="mom-grav">
+            P: <input type="number" id="mom-para" name="mom-para">
+            A: <input type="number" id="mom-abort" name="mom-abort">
+        </div>
+        <div>
+            <label for="delivery">Method of Delivery: </label>
+            <select id="delivery" name="delivery">
+                <option value="normal spontaneous delivery">normal spontaneous delivery</option>
+                <option value="vaginal delivery">vaginal delivery</option>
+                <option value="vacuum extraction delivery">vacuum extraction delivery</option>
+                <option value="Cesarean section">Cesarean section</option>
+            </select>
+        </div>
+        <div>
+            <label for="apgar-1">APGAR 1':</label>
+            <input type="number" id="apgar-1" name="apgar-1">
+            <label for="apgar-5">APGAR 5':</label>
+            <input type="number" id="apgar-5" name="apgar-5">
+        </div>
+
+        <div>
             <label for="hbsag">HBsAg:</label>
             <input type="checkbox" id="hbsag" name="hbsag">
+        </div>
 
         <h1>Ballard Score</h1>
-            <label>姿勢 Posture</label>
-            
-
-            <label>方窗（腕）Square window</label>
-            <select id="square-window" name="square-window">
-                <option value="over-90">>90</option>
-                <option value="at-90">90</option>
-                <option value="at-60">60</option>
-                <option value="at-45">45</option>
-                <option value="at-30">30</option>
-                <option value="at-0">0</option>
-            </select>
-
-            <label>手臂反彈 Arm recoil</label>
-            <select id="arm-recoil" name="arm-recoil">
-                <option value="180">Over 180</option>
-                <option value="140-180">140-180</option>
-                <option value="110-140">110-140</option>
-                <option value="90-110">90-110</option>
-                <option value="90">90</option>
-            </select>
-
-            <label>膕窩角 Popliteal angle</label>
-            <select id="popliteal-angle" name="popliteal-angle">
-                <option value="180">180</option>
-                <option value="160">160</option>
-                <option value="140">140</option>
-                <option value="120">120</option>
-                <option value="100">100</option>
-                <option value="90">90</option>
-                <option value="below-90">Under 90</option>
-            </select>
-
-            <label>圍巾徵象 Scarf sign</label>
-            <select id="scarf-sign" name="scarf-sign">
-                <option value="-1">-1</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-            
-            <label>足跟觸耳 Heel to ear</label>
-            <select id="heel-to-ear" name="heel-to-ear">
-                <option value="-1">-1</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-            </select>
-        <table class="ScoreSheet" border="1"><tbody>
+        
+        <table id="ballard-neuro" class="ScoreSheet">
+            <thead>
             <tr class="ScoreSheetTableHeader">
-                <td rowspan="2">SIGN</td><td colspan="7">SCORE</td><td rowspan="2">SIGN SCORE</td>
+                <td rowspan="2">SIGN</td>
+                <td colspan="7">SCORE</td>
+                <td rowspan="2">SIGN SCORE</td>
             </tr>
+            </thead>
+            <tbody>
             <tr class="ScoreSheetBlue">
-            <td>-1</td>
-            <td>0</td>
-            <td>1</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
+                <td></td>
+                <td>-1</td>
+                <td>0</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
             </tr>
             <tr>
-                <td class="ScoreSheetBlue">
-                    Posture
-                </td>
-                <td class="ScoreSheetGray">
-                    &nbsp;
-                </td>
-                <td>
-                    <img alt="posture" src="images/posture0.gif">
-                </td>
-                <td>
-                    <img alt="posture" src="images/posture1.gif">
-                </td>
-                <td>
-                    <img alt="posture" src="images/posture2.gif">
-                </td>
-                <td>
-                    <img alt="posture" src="images/posture3.gif">
-                </td>
-                <td>
-                    <img alt="posture" src="images/posture4.gif">
-                </td>
-                <td class="ScoreSheetGray">
-                    &nbsp;
-                </td>
-                <td>
-                    <select id="posture" name="posture">
-                        <option value="posture-0">0</option>
-                        <option value="posture-1">1</option>
-                        <option value="posture-2">2</option>
-                        <option value="posture-3">3</option>
-                        <option value="posture-4">4</option>
-                    </select>
-                </td>
+                <td class="ScoreSheetBlue">Posture</td>
+                <td class="ScoreSheetGray"></td>
+                <td><img alt="posture" src="images/posture0.gif"></td>
+                <td><img alt="posture" src="images/posture1.gif"></td>
+                <td><img alt="posture" src="images/posture2.gif"></td>
+                <td><img alt="posture" src="images/posture3.gif"></td>
+                <td><img alt="posture" src="images/posture4.gif"></td>
+                <td class="ScoreSheetGray"></td>
+                <td><select id="posture" name="posture">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select></td>
             </tr>
             <tr>
-                <td class="ScoreSheetBlue">
-                    Square Window
-                </td>
-                <td>
-                    <img alt="square window" src="images/square-1.gif">
-                </td>
-                <td>
-                    <img alt="square window" src="images/square0.gif">
-                </td>
-                <td>
-                    <img alt="square window" src="images/square1.gif">
-                </td>
-                <td>
-                    <img alt="square window" src="images/square2.gif">
-                </td>
-                <td>
-                    <img alt="square window" src="images/square3.gif">
-                </td>
-                <td>
-                    <img alt="square window" src="images/square4.bmp">
-                </td>
-                <td class="ScoreSheetGray">
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
+                <td class="ScoreSheetBlue">Square Window</td>
+                <td><img alt="square window" src="images/square-1.gif"></td>
+                <td><img alt="square window" src="images/square0.gif"></td>
+                <td><img alt="square window" src="images/square1.gif"></td>
+                <td><img alt="square window" src="images/square2.gif"></td>
+                <td><img alt="square window" src="images/square3.gif"></td>
+                <td><img alt="square window" src="images/square4.bmp"></td>
+                <td class="ScoreSheetGray"></td>
+                <td><select id="square" name="square">
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select></td>
             </tr>
             <tr>
-                <td class="ScoreSheetBlue">
-                    Arm Recoil
-                </td>
-                <td class="ScoreSheetGray">
-                    &nbsp;
-                </td>
-                <td>
-                    <img alt="" src="images/arm0.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/arm1.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/arm2.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/arm3.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/arm4.gif">
-                </td>
-                <td class="ScoreSheetGray">
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
+                <td class="ScoreSheetBlue">Arm Recoil</td>
+                <td class="ScoreSheetGray"></td>
+                <td><img alt="" src="images/arm0.gif"></td>
+                <td><img alt="" src="images/arm1.gif"></td>
+                <td><img alt="" src="images/arm2.gif"></td>
+                <td><img alt="" src="images/arm3.gif"></td>
+                <td><img alt="" src="images/arm4.gif"></td>
+                <td class="ScoreSheetGray"></td>
+                <td><select id="arm" name="arm">
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                </select></td>
             </tr>
             <tr>
-                <td class="ScoreSheetBlue">
-                    Popliteal Angle
-                </td>
-                <td>
-                    <img alt="" src="images/pop-1.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/pop0.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/pop1.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/pop2.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/pop3.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/pop4.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/pop5.gif">
-                </td>
-                <td>
-                    &nbsp;
-                </td>
+                <td class="ScoreSheetBlue">Popliteal Angle</td>
+                <td><img alt="" src="images/pop-1.gif"></td>
+                <td><img alt="" src="images/pop0.gif"></td>
+                <td><img alt="" src="images/pop1.gif"></td>
+                <td><img alt="" src="images/pop2.gif"></td>
+                <td><img alt="" src="images/pop3.gif"></td>
+                <td><img alt="" src="images/pop4.gif"></td>
+                <td><img alt="" src="images/pop5.gif"></td>
+                <td><select id="pop" name="pop">
+                    <option value=-1>-1</option>
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                </select></td>
             </tr>
             <tr>
-                <td class="ScoreSheetBlue">
-                    Scarf Sign
-                </td>
-                <td>
-                    <img alt="" src="images/scarf-1.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/scarf0.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/scarf1.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/scarf2.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/scarf3.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/scarf4.gif">
-                </td>
-                <td class="ScoreSheetGray">
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
+                <td class="ScoreSheetBlue">Scarf Sign</td>
+                <td><img alt="" src="images/scarf-1.gif"></td>
+                <td><img alt="" src="images/scarf0.gif"></td>
+                <td><img alt="" src="images/scarf1.gif"></td>
+                <td><img alt="" src="images/scarf2.gif"></td>
+                <td><img alt="" src="images/scarf3.gif"></td>
+                <td><img alt="" src="images/scarf4.gif"></td>
+                <td class="ScoreSheetGray"></td>
+                <td><select id="scarf" name="scarf">
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select></td>
             </tr>
             <tr>
-                <td class="ScoreSheetBlue">
-                    Heel To Ear
-                </td>
-                <td>
-                    <img alt="" src="images/heel-1.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/heel0.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/heel1.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/heel2.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/heel3.gif">
-                </td>
-                <td>
-                    <img alt="" src="images/heel4.gif">
-                </td>
-                <td class="ScoreSheetGray">
-                    &nbsp;
-                </td>
-                <td>
-                    &nbsp;
-                </td>
+                <td class="ScoreSheetBlue">Heel To Ear</td>
+                <td><img alt="" src="images/heel-1.gif"></td>
+                <td><img alt="" src="images/heel0.gif"></td>
+                <td><img alt="" src="images/heel1.gif"></td>
+                <td><img alt="" src="images/heel2.gif"></td>
+                <td><img alt="" src="images/heel3.gif"></td>
+                <td><img alt="" src="images/heel4.gif"></td>
+                <td class="ScoreSheetGray"></td>
+                <td><select id="heel" name="heel">
+                    <option value="-1">-1</option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select></td>
             </tr>
             <tr>
                 <td colspan="8">
@@ -267,19 +201,121 @@
                         TOTAL NEUROMUSCULAR SCORE
                     </p>
                 </td>
+                <td style="text-align: center"><output id="neuro-score"></output></td>
+            </tr>
+        </tbody></table>
+
+        
+
+        <table class="ScoreSheet">
+            <tbody><tr>
+                <td rowspan="2">SIGN</td>
+                <td colspan="7">SCORE</td>
+                <td rowspan="2">SIGN SCORE</td>
+            </tr>
+            <tr class="ScoreSheetBlue">
+                <td>-1</td>
+                <td>0</td>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td class="ScoreSheetBlue">皮膚</td>
+                <td>脆弱、黏稠透明</td>
+                <td>紅色半透明</td>
+                <td>粉紅光滑可見血管</td>
+                <td>脫皮、紅疹、可見血管</td>
+                <td>乾裂、蒼白、罕見血管</td>
+                <td>乾燥、脫皮、看不見血管</td>
+                <td>堅韌、乾裂嚴重、皺摺</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="ScoreSheetBlue">胎毛<br>Lanugo</td>
+                <td>無</td>
+                <td>稀少</td>
+                <td>豐富</td>
+                <td>稀薄</td>
+                <td>出現光禿區域</td>
+                <td>大部分沒有</td>
+                <td class="ScoreSheetGray"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="ScoreSheetBlue">腳底<br>Plantar Surface</td>
+                <td>heel-toe<br>40-50mm: -1 &lt;40mm: -2</td>
+                <td>&gt;50 mm<br>no crease</td>
+                <td>faint red marks</td>
+                <td>anterior<br>transverse crease only</td>
+                <td>creases ant. 2/3</td>
+                <td>creases over entire sole</td>
+                <td class="ScoreSheetGray"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="ScoreSheetBlue">Breast</td>
+                <td>imperceptable</td>
+                <td>barely perceptable</td>
+                <td>flat areola<br>no bud</td>
+                <td>stippled areola<br>1-2 mm bud</td>
+                <td>raised areola<br>3-4 mm bud</td>
+                <td>full areola<br>5-10 mm bud</td>
+                <td class="ScoreSheetGray"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="ScoreSheetBlue">Eye / Ear</td>
+                <td>lids fused<br>loosely: -1<br>tightly: -2</td>
+                <td>lids open<br>pinna flat<br>stays folded</td>
+                <td>sl. curved pinna; soft; slow recoil</td>
+                <td>well-curved pinna; soft but ready recoil</td>
+                <td>formed &amp; firm<br>instant recoil</td>
+                <td>thick cartilage<br>ear stiff</td>
+                <td class="ScoreSheetGray"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="ScoreSheetBlue">Genitals (Male)</td>
+                <td>scrotum flat, smooth</td>
+                <td>scrotum empty,<br>faint rugae</td>
+                <td>testes in upper canal,<br>rare rugae</td>
+                <td>testes descending,<br>few rugae</td>
+                <td>testes down,<br>good rugae</td>
+                <td>testes pendulous,<br>deep rugae</td>
+                <td class="ScoreSheetGray"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="ScoreSheetBlue">Genitals (Female)</td>
+                <td>clitoris<br>prominent &amp; labia flat</td>
+                <td>prominent<br>clitoris &amp; small labia minora</td>
+                <td>prominent<br>clitoris &amp; enlarging minora</td>
+                <td>majora &amp; minora equally prominent</td>
+                <td>majora large,<br>minora small</td>
+                <td>majora cover clitoris &amp; minora</td>
+                <td class="ScoreSheetGray"></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="8">
+                    <p style="text-align: right">
+                        TOTAL PHYSICAL MATURITY SCORE
+                    </p>
+                </td>
                 <td>
-                    &nbsp;
+                    
                 </td>
             </tr>
         </tbody></table>
-        
-
-            
-        </div>
-        <button type="submit">Submit</button>
+        <button type="submit">Save</button>
     </form>
 
-    <div id="output">
+    <div>
+        <output id="output-text"></output>
     </div>
     <script src="main.js"></script>
 </body>
+</html>

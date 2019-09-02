@@ -1,0 +1,31 @@
+body {
+    font-family: sans-serif;
+}
+
+form div {
+    padding: 10px;
+}
+
+.ScoreSheet {
+    table-layout: fixed;
+    width: 960px;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+.ScoreSheet tr, td {
+    border: 1px solid black;
+    
+}
+
+.ScoreSheet output {
+    justify-self: flex-end;
+}
+
+.ScoreSheetBlue {
+    background-color: cornflowerblue;
+}
+
+.ScoreSheetGray {
+    background-color: gray;
+}
