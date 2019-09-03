@@ -12,8 +12,8 @@ form div {
 }
 
 .ScoreSheet {
-    
-    width: 960px;
+    table-layout: fixed;
+    width: 1280px;
     border-collapse: collapse;
     border: 1px solid black;
 }
