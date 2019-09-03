@@ -324,13 +324,13 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">皮膚</td>
-                <td>脆弱、黏稠透明</td>
-                <td>紅色半透明</td>
-                <td>粉紅光滑可見血管</td>
-                <td>脫皮、紅疹、可見血管</td>
-                <td>乾裂、蒼白、罕見血管</td>
-                <td>乾燥、脫皮、看不見血管</td>
-                <td>堅韌、乾裂嚴重、皺摺</td>
+                <td onclick="setSelect('skin', -1)">脆弱、黏稠透明</td>
+                <td onclick="setSelect('skin', 0)">紅色半透明</td>
+                <td onclick="setSelect('skin', 1)">粉紅光滑可見血管</td>
+                <td onclick="setSelect('skin', 2)">脫皮、紅疹、可見血管</td>
+                <td onclick="setSelect('skin', 3)">乾裂、蒼白、罕見血管</td>
+                <td onclick="setSelect('skin', 4)">乾燥、脫皮、看不見血管</td>
+                <td onclick="setSelect('skin', 5)">堅韌、乾裂嚴重、皺摺</td>
                 <td><select id="skin" name="skin">
                     <option value=-1>-1</option>
                     <option value=0>0</option>
@@ -343,12 +343,12 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">胎毛<br>Lanugo</td>
-                <td>無</td>
-                <td>稀少</td>
-                <td>豐富</td>
-                <td>稀薄</td>
-                <td>出現光禿區域</td>
-                <td>大部分沒有</td>
+                <td onclick="setSelect('lanugo', -1)">無</td>
+                <td onclick="setSelect('lanugo', 0)">稀少</td>
+                <td onclick="setSelect('lanugo', 1)">豐富</td>
+                <td onclick="setSelect('lanugo', 2)">稀薄</td>
+                <td onclick="setSelect('lanugo', 3)">出現光禿區域</td>
+                <td onclick="setSelect('lanugo', 4)">大部分沒有</td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="lanugo" name="lanugo">
                     <option value=-1>-1</option>
@@ -361,12 +361,12 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">腳底<br>Plantar Surface</td>
-                <td>heel-toe<br>40-50mm: -1 &lt;40mm: -2</td>
-                <td>&gt;50 mm<br>no crease</td>
-                <td>faint red marks</td>
-                <td>anterior<br>transverse crease only</td>
-                <td>creases ant. 2/3</td>
-                <td>creases over entire sole</td>
+                <td onclick="setSelect('plantar', -1)">heel-toe<br>40-50mm: -1 &lt;40mm: -2</td>
+                <td onclick="setSelect('plantar', 0)">&gt;50 mm<br>no crease</td>
+                <td onclick="setSelect('plantar', 1)">faint red marks</td>
+                <td onclick="setSelect('plantar', 2)">anterior<br>transverse crease only</td>
+                <td onclick="setSelect('plantar', 3)">creases ant. 2/3</td>
+                <td onclick="setSelect('plantar', 4)">creases over entire sole</td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="plantar" name="plantar">
                     <option value=-1>-1</option>
@@ -379,12 +379,12 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Breast</td>
-                <td>imperceptable</td>
-                <td>barely perceptable</td>
-                <td>flat areola<br>no bud</td>
-                <td>stippled areola<br>1-2 mm bud</td>
-                <td>raised areola<br>3-4 mm bud</td>
-                <td>full areola<br>5-10 mm bud</td>
+                <td onclick="setSelect('breast', -1)">imperceptable</td>
+                <td onclick="setSelect('breast', 0)">barely perceptable</td>
+                <td onclick="setSelect('breast', 1)">flat areola<br>no bud</td>
+                <td onclick="setSelect('breast', 2)">stippled areola<br>1-2 mm bud</td>
+                <td onclick="setSelect('breast', 3)">raised areola<br>3-4 mm bud</td>
+                <td onclick="setSelect('breast', 4)">full areola<br>5-10 mm bud</td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="breast" name="breast">
                     <option value=-1>-1</option>
@@ -397,12 +397,12 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Eye / Ear</td>
-                <td>lids fused<br>loosely: -1<br>tightly: -2</td>
-                <td>lids open<br>pinna flat<br>stays folded</td>
-                <td>sl. curved pinna; soft; slow recoil</td>
-                <td>well-curved pinna; soft but ready recoil</td>
-                <td>formed &amp; firm<br>instant recoil</td>
-                <td>thick cartilage<br>ear stiff</td>
+                <td onclick="setSelect('eye-ear', -1)">lids fused<br>loosely: -1<br>tightly: -2</td>
+                <td onclick="setSelect('eye-ear', 0)">lids open<br>pinna flat<br>stays folded</td>
+                <td onclick="setSelect('eye-ear', 1)">sl. curved pinna; soft; slow recoil</td>
+                <td onclick="setSelect('eye-ear', 2)">well-curved pinna; soft but ready recoil</td>
+                <td onclick="setSelect('eye-ear', 3)">formed &amp; firm<br>instant recoil</td>
+                <td onclick="setSelect('eye-ear', 4)">thick cartilage<br>ear stiff</td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="eye-ear" name="eye-ear">
                     <option value=-1>-1</option>
@@ -415,12 +415,12 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Genitals (Male)</td>
-                <td>scrotum flat, smooth</td>
-                <td>scrotum empty,<br>faint rugae</td>
-                <td>testes in upper canal,<br>rare rugae</td>
-                <td>testes descending,<br>few rugae</td>
-                <td>testes down,<br>good rugae</td>
-                <td>testes pendulous,<br>deep rugae</td>
+                <td onclick="setSelect('male-genital', -1)">scrotum flat, smooth</td>
+                <td onclick="setSelect('male-genital', 0)">scrotum empty,<br>faint rugae</td>
+                <td onclick="setSelect('male-genital', 1)">testes in upper canal,<br>rare rugae</td>
+                <td onclick="setSelect('male-genital', 2)">testes descending,<br>few rugae</td>
+                <td onclick="setSelect('male-genital', 3)">testes down,<br>good rugae</td>
+                <td onclick="setSelect('male-genital', 4)">testes pendulous,<br>deep rugae</td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="male-genital" name="male-genital">
                     <option value=-1>-1</option>
@@ -433,12 +433,12 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Genitals (Female)</td>
-                <td>clitoris<br>prominent &amp; labia flat</td>
-                <td>prominent<br>clitoris &amp; small labia minora</td>
-                <td>prominent<br>clitoris &amp; enlarging minora</td>
-                <td>majora &amp; minora equally prominent</td>
-                <td>majora large,<br>minora small</td>
-                <td>majora cover clitoris &amp; minora</td>
+                <td onclick="setSelect('female-genital', -1)">clitoris<br>prominent &amp; labia flat</td>
+                <td onclick="setSelect('female-genital', 0)">prominent<br>clitoris &amp; small labia minora</td>
+                <td onclick="setSelect('female-genital', 1)">prominent<br>clitoris &amp; enlarging minora</td>
+                <td onclick="setSelect('female-genital', 2)">majora &amp; minora equally prominent</td>
+                <td onclick="setSelect('female-genital', 3)">majora large,<br>minora small</td>
+                <td onclick="setSelect('female-genital', 4)">majora cover clitoris &amp; minora</td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="female-genital" name="female-genital">
                     <option value=-1>-1</option>
