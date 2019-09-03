@@ -11,7 +11,7 @@ window.onload = function() {
             element = document.getElementById(value);
         }
 
-        console.log("setting element of type", element.type, element.tagName);
+        //console.log("setting element of type", element.type, element.tagName);
         
         if (element.type == 'checkbox') {
             document.getElementById(key).checked = true;
@@ -28,14 +28,15 @@ window.onload = function() {
      * add calcBallard to all ballard relevant elements
     */
    calcBallard();
-   document.querySelectorAll("#ballard-neuro img").forEach(e => {
+   document.querySelectorAll("#ballard-neuro img, #ballard-physi td").forEach(e => {
        e.addEventListener("click", calcBallard);
    });
-   document.querySelectorAll("#ballard-neuro select").forEach(e => {
+   document.querySelectorAll("#ballard-neuro select, #ballard-physi select").forEach(e => {
        e.addEventListener("change", calcBallard);
    });
 
-   generateRecord("admission");
+   document.getElementById("output-text").innerText = generateRecord("admission");
+   
 };
 
 function update(params) {
@@ -44,53 +45,68 @@ function update(params) {
     calcBallard();
 }
 
+function setSelect(id, value) {
+    document.getElementById(id).value = value;
+    calcBallard();
+}
+
 function calcBallard() { 
     /* calc neuro score */
     let neuroscore = Array.from(document.querySelectorAll("#ballard-neuro select"))
     .reduce((sum, element) => sum + parseInt(element.value) || 0, 0);
     document.getElementById("neuro-score").innerText = neuroscore;
-    console.log(neuroscore);
+    //console.log(neuroscore);
     /* calc physical score */
+    let physiscore = Array.from(document.querySelectorAll("#ballard-physi select"))
+    .reduce((sum, element) => sum + parseInt(element.value) || 0, 0);
+    document.getElementById("physi-score").innerText = physiscore;
+    
+    document.getElementById("ballard-score").innerText = neuroscore + physiscore;
+    document.getElementById("estimate-wk").innerText = Math.round((neuroscore + physiscore)*0.4)+24
+    return neuroscore + physiscore
 };
 
 function generateRecord(recordType) {
     const params = (new URL(document.location)).searchParams;
+    
     data = {
         
     };
     if (recordType == "admission") {
         
-        let outputText = 
-        `<Chief Complaint>
+        return `\
+        <Chief Complaint>
         ${params.get("sex")} newborn admitted for post-partum neonatal care
 
         <Present Illness>
-        This just born ${params.get("sex")} ${params.get("gaWk")>=37 ? "term" : "preterm"} newborn was born at Kaohsiung Medical University Hospital \
+        This just born ${params.get("sex")} ${params.get("ga-wk")>=37 ? "term" : "preterm"} newborn was born at Kaohsiung Medical University Hospital \
         by a ${params.get("mom-age")}-year-old woman (Gravida ${params.get("mom-grav")} Para ${params.get("mom-para")} Abortion ${params.get("mom-abort")}), \
-        gestational age: ${params.get("gaWk")}+${params.get("gaDay") || 0} weeks via ${params.get("delivery")} on ${params.get("bdate")} ${params.get("btime")}. 
+        gestational age: ${params.get("ga-wk")}+${params.get("ga-day") || 0} weeks via ${params.get("delivery")} on ${params.get("bdate")} ${params.get("btime")}. 
         After birth, the neonate's Apgar scores were ${params.get("apgar-1")} and ${params.get("apgar-5")} at the first minute and fifth minute. 
-        Delay of initial crying (-), prolonged rupture of membrane (-). 
+        ${params.get("prom") == "" ? "" : `Prolonged  rupture of membrane (${params.get("prom")})`}\
+        ${params.get("delay-cry") == "" ? "" : `, Delay of initial crying (${params.get("delay-cry")})`}
         
-        ${params.get("sex") == "male"?"His":"Her"} mother had no underlying diseases, \
-        Hepatitis B surface antigen (HBs Ag) (-), \
-        Hepatitis B e Antigen (HBe Ag) (-), \
-        venereal disease research laboratory (VDRL) (-), \
-        Rubella immunoglobulin G (+), \
-        Group B Streptococcus (GBS) (-).
+        ${params.get("sex") == "male"?"His":"Her"} mother had no underlying diseases\
+        ${params.get("hbsag") == "" ? "" : `, Hepatitis B surface antigen (HBs Ag) (${params.get("hbsag")})`}\
+        ${params.get("hbeag") == "" ? "" : `, Hepatitis B e Antigen (HBe Ag) (${params.get("hbeag")})`}\
+        ${params.get("vdrl") == "" ? "" : `, venereal disease research laboratory (VDRL) (${params.get("vdrl")})`}\
+        ${params.get("rubella-igg") == "" ? "" : `, Rubella immunoglobulin G (${params.get("rubella-igg")})`}\
+        ${params.get("gbs") == "" ? "" : `, Group B Streptococcus (GBS) (${params.get("gbs")})`}.
         After delivery, this neonate was admitted to baby room for further care and evaluation.
 
         <Past History>
         [Birth history]
-        Method of delivery: ${params.get("delivery")};  Apgar score (1’/5’): ${params.get("apgar-1")}${params.get("apgar-5")} 
-        □Prolonged  rupture of membrane , □Delay of initial crying
-        Body weight: ____________gm (_____th percentile); 
-        □Small for gestational age □Appropriate for gestational age □Large for gestational age 
-        Body length: ____________cm (_____th percentile)
-        Head circumference: ___________cm (_____th percentile)   
-        Chest circumference: ___________cm
+        Method of delivery: ${params.get("delivery")};  Apgar score (1’/5’): ${params.get("apgar-1")}/${params.get("apgar-5")} 
+        ${params.get("prom") == "" ? "" : `Prolonged  rupture of membrane (${params.get("prom")})`}\
+        ${params.get("delay-cry") == "" ? "" : `, Delay of initial crying (${params.get("delay-cry")})`}
+        Body weight: ${params.get("bw")}gm (${params.get("bw-percent")}th percentile); 
+        ${params.get("bw-for-ga")}
+        Body length: ${params.get("b-len")}cm (${params.get("b-len-percent")}th percentile)
+        Head circumference: ${params.get("head-circum")}cm (${params.get("head-circum-percent")}th percentile)   
+        Chest circumference: ${params.get("chest-circum")}cm
 
         [Maternal History]
-        Chart No.: _______________ Name: ${params.get("mom-name")}  Age:${params.get("mom-age")}-year-old
+        Chart No.: ${params.get("mom-chart-no")} Name: ${params.get("mom-name")}  Age:${params.get("mom-age")}-year-old
         Delivery history: Gravida ${params.get("mom-grav")} Para ${params.get("mom-para")} Abortion ${params.get("mom-abort")}
         Non-Invasive Prenatal Testing (NIPT非侵入性產前檢測) : □Yes, Normal/_______(其他異常報告); □ No
         Aminocentesis (羊膜穿刺術): □Yes, chromosome____________; □ No
@@ -128,10 +144,10 @@ function generateRecord(recordType) {
         None
 
         <Nutritional Status>
-        Body weight: ____________gm (_____th percentile); 
-        □Small for gestational age □Appropriate for gestational age □Large for gestational age
-        Body length: ____________cm (_____th percentile)
-        Head circumference: ___________cm (_____th percentile)   
+        Body weight: ${params.get("bw")}gm (${params.get("bw-percent")}th percentile); 
+        ${params.get("bw-for-ga")}
+        Body length: ${params.get("b-len")}cm (${params.get("b-len-percent")}th percentile)
+        Head circumference: ${params.get("head-circum")}cm (${params.get("head-circum-percent")}th percentile)
 
         <Psycho-mental Status>
         Consciousness: ■alert 
@@ -162,7 +178,7 @@ function generateRecord(recordType) {
         ** Hip joint: Barlow test (Left/Right) ______/______; 
         Ortolani test (Left/ Right) ______/______
         □Imperforated anus  □Hydrocele  □Cryptochidism
-        ** New Ballard Score: ______(填分數), ______ weeks(填預估週數) 
+        ** New Ballard Score: ${calcBallard()}, ${Math.round(calcBallard()*0.4)+24} weeks
 
         <Available laboratory data and examination results>
         Not applicable
@@ -172,13 +188,15 @@ function generateRecord(recordType) {
         Not applicable
 
         <Impression/Tentative diagnosis>
-        . ${params.get("sex")} ${params.get("gaWk")>=37 ? "term" : "preterm"} newborn, gestational age ${params.get("gaWk")}+${params.get("gaDay") || 0} weeks, \
-        birth body weight _____ gm, via normal spontaneous delivery/vaginal delivery/vacuum extraction delivery/Cesarean section(生產方式請記得選), Apgar score __'-/___', small/appropriate/large for gestational age(生長評估請記得選)
+        . ${params.get("sex")} ${params.get("ga-wk")>=37 ? "term" : "preterm"} newborn, gestational age ${params.get("ga-wk")}+${params.get("ga-day") || 0} weeks, \
+        birth body weight ${params.get("bw")} gm, via ${params.get("delivery")}, \
+        Apgar score ${params.get("apgar-1")}/${params.get("apgar-5")}, \
+        ${params.get("bw-for-ga")}
 
         <Problem list (Assessment and Plan)>
         Assessment:
-        . ${params.get("sex")} ${params.get("gaWk")>=37 ? "term" : "preterm"} newborn, gestational age ${params.get("gaWk")}+${params.get("gaDay") || 0} weeks, \
-        birth body weight _____ gm, small/appropriate/large for gestational
+        . ${params.get("sex")} ${params.get("ga-wk")>=37 ? "term" : "preterm"} newborn, gestational age ${params.get("ga-wk")}+${params.get("ga-day") || 0} weeks, \
+        birth body weight ${params.get("bw")} gm, ${params.get("bw-for-ga")}
 
         Plan:
         . Arrange Vitamin K1, hepatitis B vaccination-1st dose and Erythromycin ointment for bilateral eyes 
@@ -189,22 +207,21 @@ function generateRecord(recordType) {
         . Monitor temperature, pulse, and respiration (TPR) QD with rooming-in   (22EB)
         .Check finger sugar at 1st, 4th and 12th hours after birth(符合低血糖高風險者須填寫), due to____
         `;
-        document.getElementById("output-text").innerText = outputText;
     }
-}
+};
 
 //mother
-let momName;
-let momChartNo;
-let momAge;
-let momGrav;
-let momPara;
-let momAbort;
-let hbsAg;
-let hbeAg;
-let vdrl;
-let rubellaIgG;
-let gbs;
+//let momName;
+//let momChartNo;
+//let momAge;
+//let momGrav;
+//let momPara;
+//let momAbort;
+//let hbsAg;
+//let hbeAg;
+//let vdrl;
+//let rubellaIgG;
+//let gbs;
 let nipt; // non invasive prenatal testing
 let amnio;
 let htn;
@@ -213,18 +230,14 @@ let htn;
 // baby
 //let name;
 //let sex;
-let gaWk;
-let gaDay;
-let delivery;
-let bDatetime;
-let apgar;
-let delayCry;
-let prom;
-let bodyWeight;
-let bodyLen;
-let headCircum;
-let chestCircum;
-
-
-let cc = "";
-let hpi = "This just born ${sex} ${term} newborn was born at Kaohsiung Medical University Hospital by a ${momAge}-year-old woman (Gravida ${} Para__Abortion__), gestational age: _____ weeks via normal spontaneous delivery/vaginal delivery/vacuum extraction delivery/Cesarean section (生產方式請記得選) on ____/___/___ ___:___ AM/PM. After birth, the neonate's Apgar scores were ____ and ____ at the first minute and fifth minute. Delay of initial crying (-), prolonged rupture of membrane (-). His/Her(性別請記得選) mother had no underlying diseases, Hepatitis B surface antigen (HBs Ag) (-), Hepatitis B e Antigen (HBe Ag) (-),venereal disease research laboratory (VDRL) (-), Rubella immunoglobulin G (+),Group B Streptococcus (GBS) (-). After delivery, this neonate was admitted to baby room for further care and evaluation."
+//let ga-wk;
+//let ga-day;
+//let delivery;
+//let bDatetime;
+//let apgar;
+//let delayCry;
+//let prom;
+//let bodyWeight;
+//let bodyLen;
+//let headCircum;
+//let chestCircum;

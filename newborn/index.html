@@ -26,12 +26,41 @@
             </select>
         </div>
         <div>
-            <label for="gaWk">Gestational Age:</label>
-            <input type="number" id="gaWk" name="gaWk" value="40">+
-            <input type="number" id="gaDay" name="gaDay">
+            <label for="ga-wk">Gestational Age:</label>
+            <input type="number" id="ga-wk" name="ga-wk" value="40">+
+            <input type="number" id="ga-day" name="ga-day">
         </div>
+        <div>
+            <label for="bw">Birth Weight:</label>
+            <input type="number" id="bw" name="bw">g, 
+            <input type="text" id="bw-percent" name="bw-percent"><label for="bw-percent">th percentile</label>
+            <select id="bw-for-ga" name="bw-for-ga">
+                <option value="small for gestational age">small for gestational age</option>
+                <option value="appropriate for gestational age">appropriate for gestational age</option>
+                <option value="large for gestational age">large for gestational age</option>
+            </select>
+        </div>
+        <div>
+            <label for="b-len">Birth Length:</label>
+            <input type="number" id="b-len" name="b-len">cm, 
+            <input type="text" id="b-len-percent" name="b-len-percent"><label for="b-len-percent">th percentile</label>
+        </div>
+        <div>
+            <label for="head-circum">Birth Length:</label>
+            <input type="number" id="head-circum" name="head-circum">cm, 
+            <input type="text" id="head-circum-percent" name="head-circum-percent"><label for="head-curcum-percent">th percentile</label>
+        </div>
+        <div>
+            <label for="chest-circum">Birth Length:</label>
+            <input type="number" id="chest-circum" name="chest-circum">cm
+        </div>
+        <button type="submit">Save</button>
 
         <h1>Mother Info</h1>
+        <div>
+            <label for="mom-chart-no">Mother's Chart No.</label>
+            <input type="text" id="mom-chart-no" name="mom-chart-no">
+        </div>
         <div>
             <label for="mom-name">Mother's Name:</label>
             <input type="text" id="mom-name" name="mom-name">
@@ -56,27 +85,101 @@
             </select>
         </div>
         <div>
+            <label for="prom">Prolonged Rupture of Membrane: </label>
+            <select id="prom" name="prom">
+                <option value="">not known</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+            </select>
+        </div>
+        <div>
+            <label for="delay-cry">Delay of Initial Crying: </label>
+            <select id="delay-cry" name="delay-cry">
+                <option value="">not known</option>
+                <option value="+">+</option>
+                <option value="-">-</option>
+            </select>
+        </div>
+        <div>
             <label for="apgar-1">APGAR 1':</label>
-            <input type="number" id="apgar-1" name="apgar-1">
+            <select id="apgar-1" name="apgar-1">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
             <label for="apgar-5">APGAR 5':</label>
-            <input type="number" id="apgar-5" name="apgar-5">
+            <select id="apgar-5" name="apgar-5">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
         </div>
 
         <div>
             <label for="hbsag">HBsAg:</label>
-            <input type="checkbox" id="hbsag" name="hbsag">
+            <select id="hbsag" name="hbsag">
+                <option value="">not-tested</option>
+                <option value="-">-</option>
+                <option value="+">+</option>
+            </select>
         </div>
+
+        <div>
+            <label for="hbeag">HBeAg:</label>
+            <select id="hbeag" name="hbeag">
+                <option value="">not-tested</option>
+                <option value="-">-</option>
+                <option value="+">+</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="vdrl">VDRL:</label>
+            <select id="vdrl" name="vdrl">
+                <option value="">not-tested</option>
+                <option value="-">-</option>
+                <option value="+">+</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="rubella-igg">Rubella IgG:</label>
+            <select id="rubella-igg" name="rubella-igg">
+                <option value="">not-tested</option>
+                <option value="-">-</option>
+                <option value="+">+</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="gbs">GBS:</label>
+            <select id="gbs" name="gbs">
+                <option value="">not-tested</option>
+                <option value="-">-</option>
+                <option value="+">+</option>
+            </select>
+        </div>
+        <button type="submit">Save</button>
 
         <h1>Ballard Score</h1>
         
         <table id="ballard-neuro" class="ScoreSheet">
-            <thead>
-            <tr class="ScoreSheetTableHeader">
-                <td rowspan="2">SIGN</td>
-                <td colspan="7">SCORE</td>
-                <td rowspan="2">SIGN SCORE</td>
-            </tr>
-            </thead>
             <tbody>
             <tr class="ScoreSheetBlue">
                 <td></td>
@@ -91,11 +194,11 @@
             <tr>
                 <td class="ScoreSheetBlue">Posture</td>
                 <td class="ScoreSheetGray"></td>
-                <td><img alt="posture" src="images/posture0.gif"></td>
-                <td><img alt="posture" src="images/posture1.gif"></td>
-                <td><img alt="posture" src="images/posture2.gif"></td>
-                <td><img alt="posture" src="images/posture3.gif"></td>
-                <td><img alt="posture" src="images/posture4.gif"></td>
+                <td><img alt="posture" src="images/posture0.gif" onclick="setSelect('posture', 0);"></td>
+                <td><img alt="posture" src="images/posture1.gif" onclick="setSelect('posture', 1);"></td>
+                <td><img alt="posture" src="images/posture2.gif" onclick="setSelect('posture', 2);"></td>
+                <td><img alt="posture" src="images/posture3.gif" onclick="setSelect('posture', 3);"></td>
+                <td><img alt="posture" src="images/posture4.gif" onclick="setSelect('posture', 4);"></td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="posture" name="posture">
                     <option value="0">0</option>
@@ -107,12 +210,12 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Square Window</td>
-                <td><img alt="square window" src="images/square-1.gif"></td>
-                <td><img alt="square window" src="images/square0.gif"></td>
-                <td><img alt="square window" src="images/square1.gif"></td>
-                <td><img alt="square window" src="images/square2.gif"></td>
-                <td><img alt="square window" src="images/square3.gif"></td>
-                <td><img alt="square window" src="images/square4.bmp"></td>
+                <td><img alt="square window" src="images/square-1.gif" onclick="setSelect('square', -1);"></td>
+                <td><img alt="square window" src="images/square0.gif" onclick="setSelect('square', 0);"></td>
+                <td><img alt="square window" src="images/square1.gif" onclick="setSelect('square', 1);"></td>
+                <td><img alt="square window" src="images/square2.gif" onclick="setSelect('square', 2);"></td>
+                <td><img alt="square window" src="images/square3.gif" onclick="setSelect('square', 3);"></td>
+                <td><img alt="square window" src="images/square4.bmp" onclick="setSelect('square', 4);"></td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="square" name="square">
                     <option value="-1">-1</option>
@@ -126,11 +229,11 @@
             <tr>
                 <td class="ScoreSheetBlue">Arm Recoil</td>
                 <td class="ScoreSheetGray"></td>
-                <td><img alt="" src="images/arm0.gif"></td>
-                <td><img alt="" src="images/arm1.gif"></td>
-                <td><img alt="" src="images/arm2.gif"></td>
-                <td><img alt="" src="images/arm3.gif"></td>
-                <td><img alt="" src="images/arm4.gif"></td>
+                <td><img alt="" src="images/arm0.gif" onclick="setSelect('arm', 0);"></td>
+                <td><img alt="" src="images/arm1.gif" onclick="setSelect('arm', 1);"></td>
+                <td><img alt="" src="images/arm2.gif" onclick="setSelect('arm', 2);"></td>
+                <td><img alt="" src="images/arm3.gif" onclick="setSelect('arm', 3);"></td>
+                <td><img alt="" src="images/arm4.gif" onclick="setSelect('arm', 4);"></td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="arm" name="arm">
                     <option value=0>0</option>
@@ -142,13 +245,13 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Popliteal Angle</td>
-                <td><img alt="" src="images/pop-1.gif"></td>
-                <td><img alt="" src="images/pop0.gif"></td>
-                <td><img alt="" src="images/pop1.gif"></td>
-                <td><img alt="" src="images/pop2.gif"></td>
-                <td><img alt="" src="images/pop3.gif"></td>
-                <td><img alt="" src="images/pop4.gif"></td>
-                <td><img alt="" src="images/pop5.gif"></td>
+                <td><img alt="" src="images/pop-1.gif" onclick="setSelect('pop', -1);"></td>
+                <td><img alt="" src="images/pop0.gif" onclick="setSelect('pop', 0);"></td>
+                <td><img alt="" src="images/pop1.gif" onclick="setSelect('pop', 1);"></td>
+                <td><img alt="" src="images/pop2.gif" onclick="setSelect('pop', 2);"></td>
+                <td><img alt="" src="images/pop3.gif" onclick="setSelect('pop', 3);"></td>
+                <td><img alt="" src="images/pop4.gif" onclick="setSelect('pop', 4);"></td>
+                <td><img alt="" src="images/pop5.gif" onclick="setSelect('pop', 5);"></td>
                 <td><select id="pop" name="pop">
                     <option value=-1>-1</option>
                     <option value=0>0</option>
@@ -161,12 +264,12 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Scarf Sign</td>
-                <td><img alt="" src="images/scarf-1.gif"></td>
-                <td><img alt="" src="images/scarf0.gif"></td>
-                <td><img alt="" src="images/scarf1.gif"></td>
-                <td><img alt="" src="images/scarf2.gif"></td>
-                <td><img alt="" src="images/scarf3.gif"></td>
-                <td><img alt="" src="images/scarf4.gif"></td>
+                <td><img alt="" src="images/scarf-1.gif" onclick="setSelect('scarf', -1);"></td>
+                <td><img alt="" src="images/scarf0.gif" onclick="setSelect('scarf', 0);"></td>
+                <td><img alt="" src="images/scarf1.gif" onclick="setSelect('scarf', 1);"></td>
+                <td><img alt="" src="images/scarf2.gif" onclick="setSelect('scarf', 2);"></td>
+                <td><img alt="" src="images/scarf3.gif" onclick="setSelect('scarf', 3);"></td>
+                <td><img alt="" src="images/scarf4.gif" onclick="setSelect('scarf', 4);"></td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="scarf" name="scarf">
                     <option value="-1">-1</option>
@@ -179,12 +282,12 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Heel To Ear</td>
-                <td><img alt="" src="images/heel-1.gif"></td>
-                <td><img alt="" src="images/heel0.gif"></td>
-                <td><img alt="" src="images/heel1.gif"></td>
-                <td><img alt="" src="images/heel2.gif"></td>
-                <td><img alt="" src="images/heel3.gif"></td>
-                <td><img alt="" src="images/heel4.gif"></td>
+                <td><img alt="" src="images/heel-1.gif" onclick="setSelect('heel', -1);"></td>
+                <td><img alt="" src="images/heel0.gif" onclick="setSelect('heel', 0);"></td>
+                <td><img alt="" src="images/heel1.gif" onclick="setSelect('heel', 1);"></td>
+                <td><img alt="" src="images/heel2.gif" onclick="setSelect('heel', 2);"></td>
+                <td><img alt="" src="images/heel3.gif" onclick="setSelect('heel', 3);"></td>
+                <td><img alt="" src="images/heel4.gif" onclick="setSelect('heel', 4);"></td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="heel" name="heel">
                     <option value="-1">-1</option>
@@ -197,7 +300,7 @@
             </tr>
             <tr>
                 <td colspan="8">
-                    <p style="text-align: right">
+                    <p style="text-align: right; margin: 10px;">
                         TOTAL NEUROMUSCULAR SCORE
                     </p>
                 </td>
@@ -207,13 +310,10 @@
 
         
 
-        <table class="ScoreSheet">
-            <tbody><tr>
-                <td rowspan="2">SIGN</td>
-                <td colspan="7">SCORE</td>
-                <td rowspan="2">SIGN SCORE</td>
-            </tr>
+        <table id="ballard-physi" class="ScoreSheet">
+            <tbody>
             <tr class="ScoreSheetBlue">
+                <td></td>
                 <td>-1</td>
                 <td>0</td>
                 <td>1</td>
@@ -231,7 +331,15 @@
                 <td>乾裂、蒼白、罕見血管</td>
                 <td>乾燥、脫皮、看不見血管</td>
                 <td>堅韌、乾裂嚴重、皺摺</td>
-                <td></td>
+                <td><select id="skin" name="skin">
+                    <option value=-1>-1</option>
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                    <option value=5>5</option>
+                </select></td>
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">胎毛<br>Lanugo</td>
@@ -242,7 +350,14 @@
                 <td>出現光禿區域</td>
                 <td>大部分沒有</td>
                 <td class="ScoreSheetGray"></td>
-                <td></td>
+                <td><select id="lanugo" name="lanugo">
+                    <option value=-1>-1</option>
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                </select></td>
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">腳底<br>Plantar Surface</td>
@@ -253,7 +368,14 @@
                 <td>creases ant. 2/3</td>
                 <td>creases over entire sole</td>
                 <td class="ScoreSheetGray"></td>
-                <td></td>
+                <td><select id="plantar" name="plantar">
+                    <option value=-1>-1</option>
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                </select></td>
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Breast</td>
@@ -264,7 +386,14 @@
                 <td>raised areola<br>3-4 mm bud</td>
                 <td>full areola<br>5-10 mm bud</td>
                 <td class="ScoreSheetGray"></td>
-                <td></td>
+                <td><select id="breast" name="breast">
+                    <option value=-1>-1</option>
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                </select></td>
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Eye / Ear</td>
@@ -275,7 +404,14 @@
                 <td>formed &amp; firm<br>instant recoil</td>
                 <td>thick cartilage<br>ear stiff</td>
                 <td class="ScoreSheetGray"></td>
-                <td></td>
+                <td><select id="eye-ear" name="eye-ear">
+                    <option value=-1>-1</option>
+                    <option value=0>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                </select></td>
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Genitals (Male)</td>
@@ -286,7 +422,14 @@
                 <td>testes down,<br>good rugae</td>
                 <td>testes pendulous,<br>deep rugae</td>
                 <td class="ScoreSheetGray"></td>
-                <td></td>
+                <td><select id="male-genital" name="male-genital">
+                    <option value=-1>-1</option>
+                    <option value=0 selected>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                </select></td>
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Genitals (Female)</td>
@@ -297,23 +440,35 @@
                 <td>majora large,<br>minora small</td>
                 <td>majora cover clitoris &amp; minora</td>
                 <td class="ScoreSheetGray"></td>
-                <td></td>
+                <td><select id="female-genital" name="female-genital">
+                    <option value=-1>-1</option>
+                    <option value=0 selected>0</option>
+                    <option value=1>1</option>
+                    <option value=2>2</option>
+                    <option value=3>3</option>
+                    <option value=4>4</option>
+                </select></td>
             </tr>
             <tr>
                 <td colspan="8">
-                    <p style="text-align: right">
+                    <p style="text-align: right; margin: 10px;">
                         TOTAL PHYSICAL MATURITY SCORE
                     </p>
                 </td>
-                <td>
-                    
+                <td style="text-align: center">
+                    <output id="physi-score"></output>
                 </td>
             </tr>
         </tbody></table>
+        <div>
+            New Ballard Score: 
+            <output id="ballard-score"></output>, 
+            <output id="estimate-wk"></output> weeks
+        </div>
         <button type="submit">Save</button>
     </form>
 
-    <div>
+    <div class="record-area">
         <output id="output-text"></output>
     </div>
     <script src="main.js"></script>
