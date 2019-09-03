@@ -101,7 +101,7 @@
             </select>
         </div>
         <div>
-            <label for="apgar-1">APGAR 1':</label>
+            <label for="apgar-1">APGAR 1'/5': </label>
             <select id="apgar-1" name="apgar-1">
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -115,7 +115,7 @@
                 <option value="9">9</option>
                 <option value="10">10</option>
             </select>
-            <label for="apgar-5">APGAR 5':</label>
+            /
             <select id="apgar-5" name="apgar-5">
                 <option value="0">0</option>
                 <option value="1">1</option>
@@ -314,6 +314,7 @@
             <tbody>
             <tr class="ScoreSheetBlue">
                 <td></td>
+                <td>-2</td>
                 <td>-1</td>
                 <td>0</td>
                 <td>1</td>
@@ -324,6 +325,7 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">皮膚</td>
+                <td class="ScoreSheetGray"></td>
                 <td onclick="setSelect('skin', -1)">脆弱、黏稠透明</td>
                 <td onclick="setSelect('skin', 0)">紅色半透明</td>
                 <td onclick="setSelect('skin', 1)">粉紅光滑可見血管</td>
@@ -343,12 +345,13 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">胎毛<br>Lanugo</td>
+                <td class="ScoreSheetGray"></td>
                 <td onclick="setSelect('lanugo', -1)">無</td>
                 <td onclick="setSelect('lanugo', 0)">稀少</td>
                 <td onclick="setSelect('lanugo', 1)">豐富</td>
                 <td onclick="setSelect('lanugo', 2)">稀薄</td>
                 <td onclick="setSelect('lanugo', 3)">出現光禿區域</td>
-                <td onclick="setSelect('lanugo', 4)">大部分沒有</td>
+                <td onclick="setSelect('lanugo', 4)">大部分沒有毛</td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="lanugo" name="lanugo">
                     <option value=-1>-1</option>
@@ -361,7 +364,8 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">腳底<br>Plantar Surface</td>
-                <td onclick="setSelect('plantar', -1)">heel-toe<br>40-50mm: -1 &lt;40mm: -2</td>
+                <td onclick="setSelect('plantar', -2)">heel-toe<br>&lt;40mm</td>
+                <td onclick="setSelect('plantar', -1)">heel-toe<br>40-50mm</td>
                 <td onclick="setSelect('plantar', 0)">&gt;50 mm<br>no crease</td>
                 <td onclick="setSelect('plantar', 1)">faint red marks</td>
                 <td onclick="setSelect('plantar', 2)">anterior<br>transverse crease only</td>
@@ -369,6 +373,7 @@
                 <td onclick="setSelect('plantar', 4)">creases over entire sole</td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="plantar" name="plantar">
+                    <option value=-2>-2</option>
                     <option value=-1>-1</option>
                     <option value=0>0</option>
                     <option value=1>1</option>
@@ -379,12 +384,13 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Breast</td>
-                <td onclick="setSelect('breast', -1)">imperceptable</td>
-                <td onclick="setSelect('breast', 0)">barely perceptable</td>
-                <td onclick="setSelect('breast', 1)">flat areola<br>no bud</td>
-                <td onclick="setSelect('breast', 2)">stippled areola<br>1-2 mm bud</td>
-                <td onclick="setSelect('breast', 3)">raised areola<br>3-4 mm bud</td>
-                <td onclick="setSelect('breast', 4)">full areola<br>5-10 mm bud</td>
+                <td class="ScoreSheetGray"></td>
+                <td onclick="setSelect('breast', -1)">無法知覺其存在</td>
+                <td onclick="setSelect('breast', 0)">僅可知覺其存在</td>
+                <td onclick="setSelect('breast', 1)">乳暈平坦無突起</td>
+                <td onclick="setSelect('breast', 2)">乳暈突起有彩斑，突起約 1-2mm</td>
+                <td onclick="setSelect('breast', 3)">乳暈突起約 3-4mm</td>
+                <td onclick="setSelect('breast', 4)">乳暈突起約 5-10mm</td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="breast" name="breast">
                     <option value=-1>-1</option>
@@ -397,7 +403,8 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Eye / Ear</td>
-                <td onclick="setSelect('eye-ear', -1)">lids fused<br>loosely: -1<br>tightly: -2</td>
+                <td onclick="setSelect('eye-ear', -2)">lids fused<br>tightly</td>
+                <td onclick="setSelect('eye-ear', -1)">lids fused<br>loosely</td>
                 <td onclick="setSelect('eye-ear', 0)">lids open<br>pinna flat<br>stays folded</td>
                 <td onclick="setSelect('eye-ear', 1)">sl. curved pinna; soft; slow recoil</td>
                 <td onclick="setSelect('eye-ear', 2)">well-curved pinna; soft but ready recoil</td>
@@ -405,6 +412,7 @@
                 <td onclick="setSelect('eye-ear', 4)">thick cartilage<br>ear stiff</td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="eye-ear" name="eye-ear">
+                    <option value=-2>-2</option>
                     <option value=-1>-1</option>
                     <option value=0>0</option>
                     <option value=1>1</option>
@@ -415,6 +423,7 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Genitals (Male)</td>
+                <td class="ScoreSheetGray"></td>
                 <td onclick="setSelect('male-genital', -1)">scrotum flat, smooth</td>
                 <td onclick="setSelect('male-genital', 0)">scrotum empty,<br>faint rugae</td>
                 <td onclick="setSelect('male-genital', 1)">testes in upper canal,<br>rare rugae</td>
@@ -433,6 +442,7 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Genitals (Female)</td>
+                <td class="ScoreSheetGray"></td>
                 <td onclick="setSelect('female-genital', -1)">clitoris<br>prominent &amp; labia flat</td>
                 <td onclick="setSelect('female-genital', 0)">prominent<br>clitoris &amp; small labia minora</td>
                 <td onclick="setSelect('female-genital', 1)">prominent<br>clitoris &amp; enlarging minora</td>
@@ -450,7 +460,7 @@
                 </select></td>
             </tr>
             <tr>
-                <td colspan="8">
+                <td colspan="9">
                     <p style="text-align: right; margin: 10px;">
                         TOTAL PHYSICAL MATURITY SCORE
                     </p>
