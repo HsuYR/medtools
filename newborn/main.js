@@ -205,7 +205,7 @@ function generateRecord(recordType) {
         . Breast feeding by demand and check body weight per day 
         . Monitor temperature, pulse, and respiration (TPR) Q8H with rooming-in  (21EB)
         . Monitor temperature, pulse, and respiration (TPR) QD with rooming-in   (22EB)
-        ${params.get("hypoglycemic-risk") == "" ? "" : `. Check finger sugar at 1st, 4th and 12th hours after birth, due to ${params.get("hypoglycemia-risk")}`}
+        ${params.get("hypoglycemia-risk") == "" ? "" : `. Check finger sugar at 1st, 4th and 12th hours after birth, due to ${params.get("hypoglycemia-risk")}`}
         `;
     }
 };
