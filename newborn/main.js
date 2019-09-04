@@ -28,7 +28,7 @@ window.onload = function() {
      * add calcBallard to all ballard relevant elements
     */
    calcBallard();
-   document.querySelectorAll("#ballard-neuro img, #ballard-physi td").forEach(e => {
+   document.querySelectorAll("#ballard-neuro td, #ballard-physi td").forEach(e => {
        e.addEventListener("click", calcBallard);
    });
    document.querySelectorAll("#ballard-neuro select, #ballard-physi select").forEach(e => {
@@ -199,13 +199,13 @@ function generateRecord(recordType) {
         birth body weight ${params.get("bw")} gm, ${params.get("bw-for-ga")}
 
         Plan:
-        . Arrange Vitamin K1, hepatitis B vaccination-1st dose and Erythromycin ointment for bilateral eyes 
-        . Arrange Hepatitis B immune globulin (HBIG) 如果有打再填這項 沒打就刪除
+        . Arrange Vitamin K1, hepatitis B vaccination-1st dose and Erythromycin ointment for bilateral eyes \
+        ${params.get("hbsag") == "+" ? `\n. Arrange Hepatitis B immune globulin (HBIG)` : ""}
         . Arrange automated auditory brainstem response (aABR, 自動聽性腦幹反應) and newborn screen
-        .Breast feeding by demand and check body weight per day 
-        .Monitor temperature, pulse, and respiration (TPR) Q8H with rooming-in  (21EB)
+        . Breast feeding by demand and check body weight per day 
+        . Monitor temperature, pulse, and respiration (TPR) Q8H with rooming-in  (21EB)
         . Monitor temperature, pulse, and respiration (TPR) QD with rooming-in   (22EB)
-        .Check finger sugar at 1st, 4th and 12th hours after birth(符合低血糖高風險者須填寫), due to____
+        ${params.get("hypoglycemic-risk") == "" ? "" : `. Check finger sugar at 1st, 4th and 12th hours after birth, due to ${params.get("hypoglycemia-risk")}`}
         `;
     }
 };

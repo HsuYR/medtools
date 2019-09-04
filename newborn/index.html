@@ -34,6 +34,8 @@
             <label for="bw">Birth Weight:</label>
             <input type="number" id="bw" name="bw">g, 
             <input type="text" id="bw-percent" name="bw-percent"><label for="bw-percent">th percentile</label>
+        </div>
+        <div>
             <select id="bw-for-ga" name="bw-for-ga">
                 <option value="small for gestational age">small for gestational age</option>
                 <option value="appropriate for gestational age">appropriate for gestational age</option>
@@ -42,17 +44,17 @@
         </div>
         <div>
             <label for="b-len">Birth Length:</label>
-            <input type="number" id="b-len" name="b-len">cm, 
+            <input type="number" id="b-len" name="b-len" step="0.1">cm, 
             <input type="text" id="b-len-percent" name="b-len-percent"><label for="b-len-percent">th percentile</label>
         </div>
         <div>
-            <label for="head-circum">Birth Length:</label>
-            <input type="number" id="head-circum" name="head-circum">cm, 
+            <label for="head-circum">Head Circumference:</label>
+            <input type="number" id="head-circum" name="head-circum" step="0.1">cm, 
             <input type="text" id="head-circum-percent" name="head-circum-percent"><label for="head-curcum-percent">th percentile</label>
         </div>
         <div>
-            <label for="chest-circum">Birth Length:</label>
-            <input type="number" id="chest-circum" name="chest-circum">cm
+            <label for="chest-circum">Chest Circumference:</label>
+            <input type="number" id="chest-circum" name="chest-circum" step="0.1">cm
         </div>
         <button type="submit">Save</button>
 
@@ -175,9 +177,25 @@
                 <option value="+">+</option>
             </select>
         </div>
+
+        <div>
+            <label for="hypoglycemia-risk">Risk of hypoglycemia:</label>
+            <select id="hypoglycemia-risk" name="hypoglycemia-risk">
+                <option value="">none</option>
+                <option value="LGA">Large for Gestational Age</option>
+                <option value="SGA">Small for Gestational Age</option>
+                <option value="Mother with DM">Mother with DM</option>
+                <option value="Mother with HTN">Mother with HTN</option>
+                <option value="Preterm">Preterm</option>
+                <option value="Postterm">Postterm</option>
+                <option value="Polycythemia">Polycythemia</option>
+                <option value="Perinatal Conditions">Perinatal Conditions</option>
+            </select>
+        </div>
+
         <button type="submit">Save</button>
 
-        <h1>Ballard Score</h1>
+        <h1>New Ballard Score</h1>
         
         <table id="ballard-neuro" class="ScoreSheet">
             <tbody>
@@ -194,11 +212,11 @@
             <tr>
                 <td class="ScoreSheetBlue">Posture</td>
                 <td class="ScoreSheetGray"></td>
-                <td><img alt="posture" src="images/posture0.gif" onclick="setSelect('posture', 0);"></td>
-                <td><img alt="posture" src="images/posture1.gif" onclick="setSelect('posture', 1);"></td>
-                <td><img alt="posture" src="images/posture2.gif" onclick="setSelect('posture', 2);"></td>
-                <td><img alt="posture" src="images/posture3.gif" onclick="setSelect('posture', 3);"></td>
-                <td><img alt="posture" src="images/posture4.gif" onclick="setSelect('posture', 4);"></td>
+                <td onclick="setSelect('posture', 0);"><img alt="posture" src="images/posture0.gif"></td>
+                <td onclick="setSelect('posture', 1);"><img alt="posture" src="images/posture1.gif"></td>
+                <td onclick="setSelect('posture', 2);"><img alt="posture" src="images/posture2.gif"></td>
+                <td onclick="setSelect('posture', 3);"><img alt="posture" src="images/posture3.gif"></td>
+                <td onclick="setSelect('posture', 4);"><img alt="posture" src="images/posture4.gif"></td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="posture" name="posture">
                     <option value="0">0</option>
@@ -210,12 +228,12 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Square Window</td>
-                <td><img alt="square window" src="images/square-1.gif" onclick="setSelect('square', -1);"></td>
-                <td><img alt="square window" src="images/square0.gif" onclick="setSelect('square', 0);"></td>
-                <td><img alt="square window" src="images/square1.gif" onclick="setSelect('square', 1);"></td>
-                <td><img alt="square window" src="images/square2.gif" onclick="setSelect('square', 2);"></td>
-                <td><img alt="square window" src="images/square3.gif" onclick="setSelect('square', 3);"></td>
-                <td><img alt="square window" src="images/square4.bmp" onclick="setSelect('square', 4);"></td>
+                <td onclick="setSelect('square', -1);"><img alt="square window" src="images/square-1.gif"></td>
+                <td onclick="setSelect('square', 0);"><img alt="square window" src="images/square0.gif"></td>
+                <td onclick="setSelect('square', 1);"><img alt="square window" src="images/square1.gif"></td>
+                <td onclick="setSelect('square', 2);"><img alt="square window" src="images/square2.gif"></td>
+                <td onclick="setSelect('square', 3);"><img alt="square window" src="images/square3.gif"></td>
+                <td onclick="setSelect('square', 4);"><img alt="square window" src="images/square4.bmp"></td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="square" name="square">
                     <option value="-1">-1</option>
@@ -229,11 +247,11 @@
             <tr>
                 <td class="ScoreSheetBlue">Arm Recoil</td>
                 <td class="ScoreSheetGray"></td>
-                <td><img alt="" src="images/arm0.gif" onclick="setSelect('arm', 0);"></td>
-                <td><img alt="" src="images/arm1.gif" onclick="setSelect('arm', 1);"></td>
-                <td><img alt="" src="images/arm2.gif" onclick="setSelect('arm', 2);"></td>
-                <td><img alt="" src="images/arm3.gif" onclick="setSelect('arm', 3);"></td>
-                <td><img alt="" src="images/arm4.gif" onclick="setSelect('arm', 4);"></td>
+                <td onclick="setSelect('arm', 0);"><img alt="" src="images/arm0.gif"></td>
+                <td onclick="setSelect('arm', 1);"><img alt="" src="images/arm1.gif"></td>
+                <td onclick="setSelect('arm', 2);"><img alt="" src="images/arm2.gif"></td>
+                <td onclick="setSelect('arm', 3);"><img alt="" src="images/arm3.gif"></td>
+                <td onclick="setSelect('arm', 4);"><img alt="" src="images/arm4.gif"></td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="arm" name="arm">
                     <option value=0>0</option>
@@ -245,13 +263,13 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Popliteal Angle</td>
-                <td><img alt="" src="images/pop-1.gif" onclick="setSelect('pop', -1);"></td>
-                <td><img alt="" src="images/pop0.gif" onclick="setSelect('pop', 0);"></td>
-                <td><img alt="" src="images/pop1.gif" onclick="setSelect('pop', 1);"></td>
-                <td><img alt="" src="images/pop2.gif" onclick="setSelect('pop', 2);"></td>
-                <td><img alt="" src="images/pop3.gif" onclick="setSelect('pop', 3);"></td>
-                <td><img alt="" src="images/pop4.gif" onclick="setSelect('pop', 4);"></td>
-                <td><img alt="" src="images/pop5.gif" onclick="setSelect('pop', 5);"></td>
+                <td onclick="setSelect('pop', -1);"><img alt="" src="images/pop-1.gif"></td>
+                <td onclick="setSelect('pop', 0);"><img alt="" src="images/pop0.gif"></td>
+                <td onclick="setSelect('pop', 1);"><img alt="" src="images/pop1.gif"></td>
+                <td onclick="setSelect('pop', 2);"><img alt="" src="images/pop2.gif"></td>
+                <td onclick="setSelect('pop', 3);"><img alt="" src="images/pop3.gif"></td>
+                <td onclick="setSelect('pop', 4);"><img alt="" src="images/pop4.gif"></td>
+                <td onclick="setSelect('pop', 5);"><img alt="" src="images/pop5.gif"></td>
                 <td><select id="pop" name="pop">
                     <option value=-1>-1</option>
                     <option value=0>0</option>
@@ -264,12 +282,12 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Scarf Sign</td>
-                <td><img alt="" src="images/scarf-1.gif" onclick="setSelect('scarf', -1);"></td>
-                <td><img alt="" src="images/scarf0.gif" onclick="setSelect('scarf', 0);"></td>
-                <td><img alt="" src="images/scarf1.gif" onclick="setSelect('scarf', 1);"></td>
-                <td><img alt="" src="images/scarf2.gif" onclick="setSelect('scarf', 2);"></td>
-                <td><img alt="" src="images/scarf3.gif" onclick="setSelect('scarf', 3);"></td>
-                <td><img alt="" src="images/scarf4.gif" onclick="setSelect('scarf', 4);"></td>
+                <td onclick="setSelect('scarf', -1);"><img alt="" src="images/scarf-1.gif"></td>
+                <td onclick="setSelect('scarf', 0);"><img alt="" src="images/scarf0.gif"></td>
+                <td onclick="setSelect('scarf', 1);"><img alt="" src="images/scarf1.gif"></td>
+                <td onclick="setSelect('scarf', 2);"><img alt="" src="images/scarf2.gif"></td>
+                <td onclick="setSelect('scarf', 3);"><img alt="" src="images/scarf3.gif"></td>
+                <td onclick="setSelect('scarf', 4);"><img alt="" src="images/scarf4.gif"></td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="scarf" name="scarf">
                     <option value="-1">-1</option>
@@ -282,12 +300,12 @@
             </tr>
             <tr>
                 <td class="ScoreSheetBlue">Heel To Ear</td>
-                <td><img alt="" src="images/heel-1.gif" onclick="setSelect('heel', -1);"></td>
-                <td><img alt="" src="images/heel0.gif" onclick="setSelect('heel', 0);"></td>
-                <td><img alt="" src="images/heel1.gif" onclick="setSelect('heel', 1);"></td>
-                <td><img alt="" src="images/heel2.gif" onclick="setSelect('heel', 2);"></td>
-                <td><img alt="" src="images/heel3.gif" onclick="setSelect('heel', 3);"></td>
-                <td><img alt="" src="images/heel4.gif" onclick="setSelect('heel', 4);"></td>
+                <td onclick="setSelect('heel', -1);"><img alt="" src="images/heel-1.gif"></td>
+                <td onclick="setSelect('heel', 0);"><img alt="" src="images/heel0.gif"></td>
+                <td onclick="setSelect('heel', 1);"><img alt="" src="images/heel1.gif"></td>
+                <td onclick="setSelect('heel', 2);"><img alt="" src="images/heel2.gif"></td>
+                <td onclick="setSelect('heel', 3);"><img alt="" src="images/heel3.gif"></td>
+                <td onclick="setSelect('heel', 4);"><img alt="" src="images/heel4.gif"></td>
                 <td class="ScoreSheetGray"></td>
                 <td><select id="heel" name="heel">
                     <option value="-1">-1</option>
