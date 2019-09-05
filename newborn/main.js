@@ -1,28 +1,6 @@
 window.onload = function() {
 
-    /* 
-    * fill in all fields specified in the url get params
-    */
-
-    let params = (new URL(document.location)).searchParams;
-    params.forEach((value, key) => {
-        let element = document.getElementById(key);
-        if (element == null) {
-            element = document.getElementById(value);
-        }
-
-        //console.log("setting element of type", element.type, element.tagName);
-        
-        if (element.type == 'checkbox') {
-            document.getElementById(key).checked = true;
-        }
-        else if (element.type == 'radio') { 
-            document.getElementById(value).checked = true;
-        }
-        else { 
-            document.getElementById(key).value = value;
-        }
-    });
+    fillInForm();
 
     /*
      * add calcBallard to all ballard relevant elements
@@ -30,6 +8,7 @@ window.onload = function() {
    calcBallard();
    document.querySelectorAll("#ballard-neuro td, #ballard-physi td").forEach(e => {
        e.addEventListener("click", calcBallard);
+       e.addEventListener("click", e => console.log(e.currentTarget));
    });
    document.querySelectorAll("#ballard-neuro select, #ballard-physi select").forEach(e => {
        e.addEventListener("change", calcBallard);
@@ -39,10 +18,36 @@ window.onload = function() {
    
 };
 
-function update(params) {
+function fillInForm() {
+    /* 
+    * fill in all fields specified in the url get params
+    */
+
+   let params = (new URL(document.location)).searchParams;
+   params.forEach((value, key) => {
+       let element = document.getElementById(key);
+       if (element == null) {
+           element = document.getElementById(value);
+       }
+
+       //console.log("setting element of type", element.type, element.tagName);
+       
+       if (element.type == 'checkbox') {
+           document.getElementById(key).checked = true;
+       }
+       else if (element.type == 'radio') { 
+           document.getElementById(value).checked = true;
+       }
+       else { 
+           document.getElementById(key).value = value;
+       }
+   });
+;}
+
+
+function updateURL(params) {
     /* update url search param */
     window.history.replaceState({}, '', `${location.pathname}?${params}`);
-    calcBallard();
 }
 
 function setSelect(id, value) {
@@ -108,8 +113,8 @@ function generateRecord(recordType) {
         [Maternal History]
         Chart No.: ${params.get("mom-chart-no")} Name: ${params.get("mom-name")}  Age:${params.get("mom-age")}-year-old
         Delivery history: Gravida ${params.get("mom-grav")} Para ${params.get("mom-para")} Abortion ${params.get("mom-abort")}
-        Non-Invasive Prenatal Testing (NIPT非侵入性產前檢測) : □Yes, Normal/_______(其他異常報告); □ No
-        Aminocentesis (羊膜穿刺術): □Yes, chromosome____________; □ No
+        Non-Invasive Prenatal Testing (NIPT非侵入性產前檢測) : ${params.get("nipt")}
+        Aminocentesis (羊膜穿刺術): ${params.get("amnio")}
         Health state: 
         □Hypertension  □Pregnancy-induced hypertension   □Pre-eclampsia/Eclampsia
         □Diabetes mellitus □Gestational diabetes mellitus 
@@ -152,11 +157,13 @@ function generateRecord(recordType) {
         <Psycho-mental Status>
         Consciousness: ■alert 
         Mentality: ■normal 
+
         <Performance status/Caring requirements>
         ．Performance status:
         ■ 4 – Bedbound (Completely disabled. Cannot carry on any self-care. Totally confined to bed or chair)
         ．Caring Requirement:
         ■Unable to care for self; REQUIRE equivalent of institutional or hospital care; disease may be progressing rapidly. 
+        
         <Physical examination>
         Vital signs: Body Temperature: ＿°C, Heart Rate: ＿ bpm, Respiratory Rate: ＿ cpm
         Appearance: □Pink □Cyanosis □Pallor, Other: ___________
@@ -222,8 +229,8 @@ function generateRecord(recordType) {
 //let vdrl;
 //let rubellaIgG;
 //let gbs;
-let nipt; // non invasive prenatal testing
-let amnio;
+//let nipt; // non invasive prenatal testing
+//let amnio;
 let htn;
 
 
