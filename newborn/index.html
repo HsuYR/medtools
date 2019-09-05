@@ -37,24 +37,41 @@
         <div>
             <label for="bw">Birth Weight:</label>
             <input type="number" id="bw" name="bw">g, 
-            <input type="text" id="bw-percent" name="bw-percent"><label for="bw-percent">th percentile</label>
-        </div>
-        <div>
-            <select id="bw-for-ga" name="bw-for-ga">
-                <option value="small for gestational age">small for gestational age</option>
-                <option value="appropriate for gestational age">appropriate for gestational age</option>
-                <option value="large for gestational age">large for gestational age</option>
-            </select>
+            <select id="bw-percent" name="bw-percent">
+                <option value="<10">&lt;10</option>
+                <option value="10-25">10-25</option>
+                <option value="25-50">25-50</option>
+                <option value="50">50</option>
+                <option value="50-75">50-75</option>
+                <option value="75-90">75-90</option>
+                <option value=">90">&gt;90</option>
+            </select><label for="bw-percent">th percentile</label>
         </div>
         <div>
             <label for="b-len">Birth Length:</label>
             <input type="number" id="b-len" name="b-len" step="0.1">cm, 
-            <input type="text" id="b-len-percent" name="b-len-percent"><label for="b-len-percent">th percentile</label>
+            <select id="b-len-percent" name="b-len-percent">
+                <option value="<10">&lt;10</option>
+                <option value="10-25">10-25</option>
+                <option value="25-50">25-50</option>
+                <option value="50">50</option>
+                <option value="50-75">50-75</option>
+                <option value="75-90">75-90</option>
+                <option value=">90">&gt;90</option>
+            </select><label for="b-len-percent">th percentile</label>
         </div>
         <div>
             <label for="head-circum">Head Circumference:</label>
             <input type="number" id="head-circum" name="head-circum" step="0.1">cm, 
-            <input type="text" id="head-circum-percent" name="head-circum-percent"><label for="head-curcum-percent">th percentile</label>
+            <select id="head-circum-percent" name="head-circum-percent">
+                <option value="<10">&lt;10</option>
+                <option value="10-25">10-25</option>
+                <option value="25-50">25-50</option>
+                <option value="50">50</option>
+                <option value="50-75">50-75</option>
+                <option value="75-90">75-90</option>
+                <option value=">90">&gt;90</option>
+            </select><label for="head-circum-percent">th percentile</label>
         </div>
         <div>
             <label for="chest-circum">Chest Circumference:</label>
@@ -88,6 +105,8 @@
                 <option value="vaginal delivery">vaginal delivery</option>
                 <option value="vacuum extraction delivery">vacuum extraction delivery</option>
                 <option value="Cesarean section">Cesarean section</option>
+                <option value="Forceps">Forceps</option>
+                <option value="VBAC">VBAC</option>
             </select>
         </div>
         <div>
@@ -186,8 +205,9 @@
             <label for="nipt">Non-Invasive Prenatal Testing:</label>
             <input type="text" id="nipt" name="nipt" placeholder="Normal / 異常報告 / No">
         </div>
+
         <div>
-            <label for="amnio">Non-Invasive Prenatal Testing:</label>
+            <label for="amnio">Amniocentesis:</label>
             <input type="text" id="amnio" name="amnio" placeholder="Yes, chromosome __ / No">
         </div>
 
@@ -205,7 +225,28 @@
                 <option value="Perinatal Conditions">Perinatal Conditions</option>
             </select>
         </div>
+        <section id="health-state">
 
+        </section>
+        <div>
+            <label for="infxn">Infectious Diseases: </label>
+            <input type="text" id="infxn" name="infxn">
+        </div>
+        <div>
+            <label for="hereditary">Hereditary diseases: </label>
+            <input type="text" id="hereditary" name="hereditary">
+        </div>
+        <div>
+            <label for="other-disease">Others specific findings: </label>
+            <input type="text" id="other-disease" name="other-disease">
+        </div>
+
+        <button type="submit">Save</button>
+
+        <h1>Physical Examination</h1>
+        <div id="physical-exam">
+
+        </div>
         <button type="submit">Save</button>
 
         <h1>New Ballard Score</h1>
@@ -511,6 +552,21 @@
 
     <div class="record-area">
         <output id="output-text"></output>
+    </div>
+
+    <div class="record-area">
+        <table>
+            <tbody>
+                <tr><td rowspan="2">出生日</td><td rowspan="2"  data-tofill="bdate"></td><td>目前歸屬</td><td data-tofill="ward"></td></tr>
+                <tr><td>住院期間</td><td data-tofill="los"></td></tr>
+                <tr><td>姓名</td><td data-tofill="baby-name"></td><td>母親年紀</td><td data-tofill="mom-name"></td></tr>
+                <tr><td colspan="2">生產方式</td><td colspan="2"  data-tofill="delivery"></td></tr>
+                <tr><td colspan="2">出生週數</td><td colspan="2" data-tofill="ga-Wk"></td></tr>
+                <tr><td colspan="2">出生體重</td><td colspan="2" data-tofill="bw"></td></tr>
+                <tr><td colspan="2">目前體重</td><td colspan="2" data-tofill="weight"></td></tr>
+                <tr><td colspan="2">Apgar score</td><td colspan="2" data-tofill="apgar-1"></td></tr>
+            </tbody>
+        </table>
     </div>
     <script src="main.js"></script>
 </body>

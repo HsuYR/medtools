@@ -1,21 +1,30 @@
 window.onload = function() {
 
-    fillInForm();
+   [
+       ["htn", "Hypertension: "],
+       ["p-htn", "Pregnancy-induced hypertension: "],
+       ["eclampsia", "Pre-eclampsia/Eclampsia: "],
+       ["dm", "Diabetes mellitus: "],
+       ["gdm", "Gestational diabetes mellitus: "]
+   ].map(i => {document.getElementById("health-state").appendChild( generateNPN(i[0], i[1]) )});
+
+   fillInForm();
 
     /*
      * add calcBallard to all ballard relevant elements
     */
-   calcBallard();
-   document.querySelectorAll("#ballard-neuro td, #ballard-physi td").forEach(e => {
-       e.addEventListener("click", calcBallard);
-       e.addEventListener("click", e => console.log(e.currentTarget));
-   });
-   document.querySelectorAll("#ballard-neuro select, #ballard-physi select").forEach(e => {
-       e.addEventListener("change", calcBallard);
-   });
+    calcBallard();
+    document.querySelectorAll("#ballard-neuro td, #ballard-physi td").forEach(e => {
+        e.addEventListener("click", calcBallard);
+        //e.addEventListener("click", e => console.log(e.currentTarget));
+    });
+    document.querySelectorAll("#ballard-neuro select, #ballard-physi select").forEach(e => {
+        e.addEventListener("change", calcBallard);
+    });
 
    document.getElementById("output-text").innerText = generateRecord("admission");
-   
+
+   //document.querySelectorAll("[data-tofill]").forEach(element => console.log(element.dataset.tofill));   
 };
 
 function fillInForm() {
@@ -29,7 +38,7 @@ function fillInForm() {
        if (element == null) {
            element = document.getElementById(value);
        }
-
+       if (element == null) console.log(key, value);
        //console.log("setting element of type", element.type, element.tagName);
        
        if (element.type == 'checkbox') {
@@ -55,6 +64,53 @@ function setSelect(id, value) {
     calcBallard();
 }
 
+// generate not-tested, positive, negative select element
+function generateNPN(id, labelString) {
+    let label = document.createElement("label");
+    label.setAttribute("for", id);
+    label.innerText = labelString;
+
+    let select = document.createElement("select");
+    select.id = id;
+    select.name = id;
+    [["", "not-tested"], ["+", "+"], ["-", "-"]].map(el => {
+        let option = document.createElement("option");
+        option.value = el[0];
+        option.innerText = el[1];
+        select.appendChild(option);
+    })
+    
+    let div = document.createElement("div");
+    div.appendChild(label);
+    div.appendChild(select);
+    return div
+}
+
+/* 
+ * Return a string indicating the percentile range of the newborn.
+ * 
+ * one of the following string would be returned:
+ * "<10"
+ * "10-25"
+ * "25-50"
+ * "50"
+ * "50-75"
+ * "75-90"
+ * ">90"
+*/
+function calcPercentile(measurement, gender, gaWk, gaDay) {
+    let mapPercentile = {
+        bodyWeight: {
+            male: [
+                [650]
+            ],
+            female: {
+
+            }
+        }
+    };
+}
+
 function calcBallard() { 
     /* calc neuro score */
     let neuroscore = Array.from(document.querySelectorAll("#ballard-neuro select"))
@@ -78,14 +134,13 @@ function generateRecord(recordType) {
         
     };
     if (recordType == "admission") {
-        
-        return `\
-        <Chief Complaint>
-        ${params.get("sex")} newborn admitted for post-partum neonatal care
 
+        return `<Chief Complaint>
+        ${params.get("sex")} newborn admitted for post-partum neonatal care
+        
         <Present Illness>
         This just born ${params.get("sex")} ${params.get("ga-wk")>=37 ? "term" : "preterm"} newborn was born at Kaohsiung Medical University Hospital \
-        by a ${params.get("mom-age")}-year-old woman (Gravida ${params.get("mom-grav")} Para ${params.get("mom-para")} Abortion ${params.get("mom-abort")}), \
+        by a ${params.get("mom-age")}-year-old woman (G${params.get("mom-grav")} P${params.get("mom-para")} A${params.get("mom-abort")}), \
         gestational age: ${params.get("ga-wk")}+${params.get("ga-day") || 0} weeks via ${params.get("delivery")} on ${params.get("bdate")} ${params.get("btime")}. 
         After birth, the neonate's Apgar scores were ${params.get("apgar-1")} and ${params.get("apgar-5")} at the first minute and fifth minute. 
         ${params.get("prom") == "" ? "" : `Prolonged  rupture of membrane (${params.get("prom")})`}\
@@ -98,14 +153,14 @@ function generateRecord(recordType) {
         ${params.get("rubella-igg") == "" ? "" : `, Rubella immunoglobulin G (${params.get("rubella-igg")})`}\
         ${params.get("gbs") == "" ? "" : `, Group B Streptococcus (GBS) (${params.get("gbs")})`}.
         After delivery, this neonate was admitted to baby room for further care and evaluation.
-
+        
         <Past History>
         [Birth history]
         Method of delivery: ${params.get("delivery")};  Apgar score (1’/5’): ${params.get("apgar-1")}/${params.get("apgar-5")} 
         ${params.get("prom") == "" ? "" : `Prolonged  rupture of membrane (${params.get("prom")})`}\
         ${params.get("delay-cry") == "" ? "" : `, Delay of initial crying (${params.get("delay-cry")})`}
         Body weight: ${params.get("bw")}gm (${params.get("bw-percent")}th percentile); 
-        ${params.get("bw-for-ga")}
+        ${params.get("bw-percent") == "<10" ? "small for gestational age": (params.get("bw-percent") == ">90" ? "large for gestational age" : "appropriate for gestational age")}
         Body length: ${params.get("b-len")}cm (${params.get("b-len-percent")}th percentile)
         Head circumference: ${params.get("head-circum")}cm (${params.get("head-circum-percent")}th percentile)   
         Chest circumference: ${params.get("chest-circum")}cm
@@ -113,18 +168,22 @@ function generateRecord(recordType) {
         [Maternal History]
         Chart No.: ${params.get("mom-chart-no")} Name: ${params.get("mom-name")}  Age:${params.get("mom-age")}-year-old
         Delivery history: Gravida ${params.get("mom-grav")} Para ${params.get("mom-para")} Abortion ${params.get("mom-abort")}
-        Non-Invasive Prenatal Testing (NIPT非侵入性產前檢測) : ${params.get("nipt")}
-        Aminocentesis (羊膜穿刺術): ${params.get("amnio")}
+        Non-Invasive Prenatal Testing (NIPT): ${params.get("nipt")}
+        Amniocentesis: ${params.get("amnio")}
         Health state: 
-        □Hypertension  □Pregnancy-induced hypertension   □Pre-eclampsia/Eclampsia
-        □Diabetes mellitus □Gestational diabetes mellitus 
-        □Infectious disease: ______________; □Hereditary disease: ________________
-        Other specific findings: ___________________________________________________
+        ${params.get("htn") == "" ? "" : `Hypertension (${params.get("htn")})\n`}\  
+        ${params.get("p-htn") == "" ? "" : `Pregnancy-induced hypertension (${params.get("p-htn")})\n`}\
+        ${params.get("eclampsia") == "" ? "" : `Pre-eclampsia/Eclampsia (${params.get("eclampsia")})\n`}\
+        ${params.get("dm") == "" ? "" : `Diabetes mellitus (${params.get("dm")})\n`}\
+        ${params.get("gdm") == "" ? "" : `Gestational diabetes mellitus (${params.get("gdm")})\n`}\
+        ${params.get("infxn") == "" ? "" : `Infectious disease: ${params.get("infxn")}\n`}\
+        ${params.get("hereditary") == "" ? "" : `Hereditary disease: ${params.get("hereditary")}\n`}\
+        ${params.get("other-disease") == "" ? "" : `Other specific findings: ${params.get("other-disease")}`}
 
         <Personal, Social and Occupational History>
         Contact history: denied 
         Cluster history: denied
-        
+
         <Review of Systems>
         ．General: weakness (-); fever (-);
         ．Skin: rash (-); cyanosis (-);
@@ -150,7 +209,7 @@ function generateRecord(recordType) {
 
         <Nutritional Status>
         Body weight: ${params.get("bw")}gm (${params.get("bw-percent")}th percentile); 
-        ${params.get("bw-for-ga")}
+        ${params.get("bw-percent") == "<10" ? "small for gestational age": (params.get("bw-percent") == ">90" ? "large for gestational age" : "appropriate for gestational age")}
         Body length: ${params.get("b-len")}cm (${params.get("b-len-percent")}th percentile)
         Head circumference: ${params.get("head-circum")}cm (${params.get("head-circum-percent")}th percentile)
 
@@ -186,24 +245,24 @@ function generateRecord(recordType) {
         Ortolani test (Left/ Right) ______/______
         □Imperforated anus  □Hydrocele  □Cryptochidism
         ** New Ballard Score: ${calcBallard()}, ${Math.round(calcBallard()*0.4)+24} weeks
-
+        
         <Available laboratory data and examination results>
         Not applicable
         若有驗血糖者請附上血糖值
 
         <Differential Diagnosis>
         Not applicable
-
+        
         <Impression/Tentative diagnosis>
         . ${params.get("sex")} ${params.get("ga-wk")>=37 ? "term" : "preterm"} newborn, gestational age ${params.get("ga-wk")}+${params.get("ga-day") || 0} weeks, \
         birth body weight ${params.get("bw")} gm, via ${params.get("delivery")}, \
         Apgar score ${params.get("apgar-1")}/${params.get("apgar-5")}, \
-        ${params.get("bw-for-ga")}
-
+        ${params.get("bw-percent") == "<10" ? "small for gestational age": (params.get("bw-percent") == ">90" ? "large for gestational age" : "appropriate for gestational age")}
+        
         <Problem list (Assessment and Plan)>
         Assessment:
         . ${params.get("sex")} ${params.get("ga-wk")>=37 ? "term" : "preterm"} newborn, gestational age ${params.get("ga-wk")}+${params.get("ga-day") || 0} weeks, \
-        birth body weight ${params.get("bw")} gm, ${params.get("bw-for-ga")}
+        birth body weight ${params.get("bw")} gm, ${params.get("bw-percent") == "<10" ? "small for gestational age": (params.get("bw-percent") == ">90" ? "large for gestational age" : "appropriate for gestational age")}
 
         Plan:
         . Arrange Vitamin K1, hepatitis B vaccination-1st dose and Erythromycin ointment for bilateral eyes \
@@ -214,6 +273,7 @@ function generateRecord(recordType) {
         . Monitor temperature, pulse, and respiration (TPR) QD with rooming-in   (22EB)
         ${params.get("hypoglycemia-risk") == "" ? "" : `. Check finger sugar at 1st, 4th and 12th hours after birth, due to ${params.get("hypoglycemia-risk")}`}
         `;
+        
     }
 };
 
