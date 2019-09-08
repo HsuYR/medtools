@@ -225,25 +225,32 @@ function generateRecord(recordType) {
         
         <Physical examination>
         Vital signs: Body Temperature: ＿°C, Heart Rate: ＿ bpm, Respiratory Rate: ＿ cpm
-        Appearance: □Pink □Cyanosis □Pallor, Other: ___________
-        Consciousness: □Alert □Drowsy   
-        Head: Anterior fontanelle: open, _____finger; Conjunctiva: □pale, Sclera: □icteric □anicteric
-        □Caput succedaneum □Cephalhematoma □Subgaleal hemorrhage
-        □Milia □Cleft palate, Other specific findings:____________________________________
-        Neck: □Supple □Lymphadenopathy □Webbed neck
-        Chest: □Symmetric expansion □Clavicle fracture □Pectus excavatum
-        Heart sound: □regular □irregular □murmur, grade_____
-        Breath sound: □clear □coarse □rale □crackle
+        Appearance: Pink/Cyanosis/Pallor, Other: ___________
+        Consciousness: Alert/Drowsy   
+        Head: Anterior fontanelle: open, _____finger
+        Caput succedaneum(+-), Cephalhematoma(+-), Subgaleal hemorrhage(+-)
+        Conjunctiva: pale(+-), Sclera: icteric/anicteric
+        Low-set ear(+-), Pre-auricular skin tags/sinus(+-)
+        Choanal atresia(+-)
+        Cleft lip/palate(+-), Micrognathia(+-), Large tongue(+-), Epstein pearls(+-)
+        Milia(+-), Eczema(+-)
+        Other specific findings:____________________________________
+        Neck: Supple/Stiff, Lymphadenopathy(+-), Webbed neck(+-), 
+        Goiter(+-), Cystic hygroma(+-), Sternomastoid tumor(+-)
+        Chest: Symmetric expansion, Clavicle fracture(+-), Pectus excavatum(+-)
+        Heart sound: regular/irregular, murmur, grade_____
+        Breath sound: clear/coarse, rale(+-), crackle(+-)
         Other specific findings:_____________________________________________________
-        Abdomen: □soft □mass, Liver/Spleen: □impalpable □palpable, _____below rib margin
-        Bowel sound: □normoactive □hypoactive □hyperactive
+        Abdomen: soft(+-) mass(+-), Liver/Spleen: impalpable/palpable, _____below rib margin
+        Bowel sound: normoactive/hypoactive/hyperactive
         Other specific findings: _____________________________________________________
-        Four limbs: □freely movable 
+        Four limbs: freely movable(+-), polydactyly(+-), syndactyly(+-)
+        Upper limb: Single transverse palmar crease(+-), Clenched hand(+-)
+        Lower limb: Rocker bottom shape(+-), 
+        ** Hip joint: Barlow test(L/R) +-/+-, Ortolani test (L/R) +-/+-;
         Other specific findings: ____________________________________________________
-        Skin: □Erythema toxicum  □Mongolian spot  □Jaundice  □Ecchymosis
-        ** Hip joint: Barlow test (Left/Right) ______/______; 
-        Ortolani test (Left/ Right) ______/______
-        □Imperforated anus  □Hydrocele  □Cryptochidism
+        Skin: Erythema toxicum(+-)  Mongolian spot(+-)  Jaundice(+-)  Ecchymosis(+-)
+        Perineum: Imperforated anus(+-), Hydrocele(+-), Cryptochidism(+-)
         ** New Ballard Score: ${calcBallard()}, ${Math.round(calcBallard()*0.4)+24} weeks
         
         <Available laboratory data and examination results>
