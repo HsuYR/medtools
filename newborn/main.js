@@ -14,12 +14,7 @@ window.onload = function() {
      * add calcBallard to all ballard relevant elements
     */
     calcBallard();
-    document.querySelectorAll("#ballard-neuro td, #ballard-physi td").forEach(e => {
-        e.addEventListener("click", calcBallard);
-        //e.addEventListener("click", e => console.log(e.currentTarget));
-    });
     document.querySelectorAll("#ballard-neuro select, #ballard-physi select").forEach(e => {
-        e.addEventListener("change", calcBallard);
         e.addEventListener("change", function(){reverseSelect(e)});
     });
 
@@ -90,6 +85,7 @@ function reverseSelect(el) {
         element.classList.remove("active");
     });
     document.querySelector(`[data-target-id="${el.id}"][data-target-value="${el.value}"]`).classList.add("active");
+    calcBallard();
 }
 
 // generate not-tested, positive, negative select element
