@@ -20,6 +20,7 @@ window.onload = function() {
     });
     document.querySelectorAll("#ballard-neuro select, #ballard-physi select").forEach(e => {
         e.addEventListener("change", calcBallard);
+        e.addEventListener("change", function(){reverseSelect(e)});
     });
 
     document.querySelectorAll("[data-target-id]").forEach(el => {
@@ -82,6 +83,13 @@ function setSelect(el) {
     el.classList.add("active");
     document.getElementById(id).value = value;
     calcBallard();
+}
+
+function reverseSelect(el) {
+    document.querySelectorAll(`[data-target-id=${el.id}]`).forEach(element => {
+        element.classList.remove("active");
+    });
+    document.querySelector(`[data-target-id="${el.id}"][data-target-value="${el.value}"]`).classList.add("active");
 }
 
 // generate not-tested, positive, negative select element
