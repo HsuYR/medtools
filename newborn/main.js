@@ -22,6 +22,10 @@ window.onload = function() {
         e.addEventListener("change", calcBallard);
     });
 
+    document.querySelectorAll("[data-target-id]").forEach(el => {
+        el.addEventListener("click", function(){setSelect(el)});
+    });
+
    document.getElementById("output-text").innerText = generateRecord("admission");
 
    //document.querySelectorAll("[data-tofill]").forEach(element => console.log(element.dataset.tofill));   
@@ -51,6 +55,16 @@ function fillInForm() {
            document.getElementById(key).value = value;
        }
    });
+
+   // color new ballard score
+   document.querySelectorAll("[data-target-id]").forEach(el => {
+       let id = el.dataset.targetId;
+       let value = el.dataset.targetValue;
+       let chosenValue = document.getElementById(id).value;
+       if (value == chosenValue) {
+           el.classList.add("active");
+       }
+   })
 ;}
 
 
@@ -59,7 +73,13 @@ function updateURL(params) {
     window.history.replaceState({}, '', `${location.pathname}?${params}`);
 }
 
-function setSelect(id, value) {
+function setSelect(el) {
+    let id = el.dataset.targetId;
+    let value = el.dataset.targetValue;
+    document.querySelectorAll(`[data-target-id=${id}]`).forEach(element => {
+        element.classList.remove("active");
+    });
+    el.classList.add("active");
     document.getElementById(id).value = value;
     calcBallard();
 }
