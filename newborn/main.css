@@ -37,15 +37,20 @@ form div {
 }
 
 .ScoreSheetBlue {
-    background-color: cornflowerblue;
+    color: white;
+    background-color: #2196F3;
 }
 
 .ScoreSheetGray {
-    background-color: gray;
+    background-color: #E0E0E0;
+}
+
+.ScoreSheet td:hover {
+    background-color: #E3F2FD;
 }
 
 .active {
-    background-color: rgb(197, 224, 247);
+    background-color: #BBDEFB;
 }
 
 
