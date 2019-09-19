@@ -38,7 +38,7 @@ form div {
 
 .ScoreSheetBlue {
     color: white;
-    background-color: #448AFF;
+    background-color: rgb(109, 95, 189) ;
 }
 
 .ScoreSheetGray {
@@ -46,12 +46,12 @@ form div {
 }
 
 [data-target-id]:hover {
-    background-color: #E3F2FD;
+    background-color: rgb(242, 240, 255);
     cursor: pointer;
 }
 
 .active {
-    background-color: #BBDEFB;
+    background-color: rgb(225, 219, 255) ;
 }
 
 
