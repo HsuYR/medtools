@@ -45,7 +45,7 @@ form div {
     background-color: #E0E0E0;
 }
 
-.ScoreSheet td:hover {
+[data-target-id]:hover {
     background-color: #E3F2FD;
 }
 
