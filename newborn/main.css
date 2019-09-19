@@ -47,6 +47,7 @@ form div {
 
 [data-target-id]:hover {
     background-color: #E3F2FD;
+    cursor: pointer;
 }
 
 .active {
