@@ -2380,5 +2380,9 @@
     "VDU": "visual display unit",
     "VE": "minute ventilation",
     "VEB": "ventricular ectopic beats",
-    "VED": "vacuum extraction delivery"
+    "VED": "vacuum extraction delivery",
+
+    "U": "unit",
+    "KVGH": "Kaohsiung Veterans General Hospital",
+    "KMHK": "Kaohsiung Municipal Hsiaokang Hospital"
 }
