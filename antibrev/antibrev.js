@@ -1,7 +1,10 @@
 
-let requestURL = 'https://hsuyr.github.io/medtools/antibrev/abbrevs.json';
-
-let request = new XMLHttpRequest();
+if (typeof requestURL === 'undefined') {
+    let requestURL = 'https://hsuyr.github.io/medtools/antibrev/abbrevs.json';
+}
+if (typeof request === 'undefined') {
+    let request = new XMLHttpRequest();
+}
 
 request.open('GET', requestURL);
 
