@@ -9,7 +9,7 @@ request.responseType = 'json';
 request.send();
 
 request.onload = ()=>{
-    const abbrevs = request.response;
+    let abbrevs = request.response;
     abbrevs = Object.keys(abbrevs).map(key => [new RegExp('(^|[^a-zA-Z])'+key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')+'([^a-zA-Z]|$)', 'g'), `${abbrevs[key]} (${key})`]);
     abbrevs = new Map(abbrevs);
 
