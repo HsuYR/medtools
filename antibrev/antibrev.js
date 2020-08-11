@@ -10,7 +10,7 @@ request.send();
 
 request.onload = ()=>{
     let abbrevs = request.response;
-    abbrevs = Object.keys(abbrevs).map(key => [new RegExp('(^|[^a-zA-Z])'+key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')+'([^a-zA-Z]|$)', 'g'), `${abbrevs[key]} (${key})`]);
+    abbrevs = Object.keys(abbrevs).map(key => [new RegExp('(^|[^a-zA-Z\(])'+key.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')+'([^a-zA-Z\)]|$)', 'g'), `${abbrevs[key]} (${key})`]);
     abbrevs = new Map(abbrevs);
 
     let note = document.querySelector('#cke_1_contents iframe').contentDocument;
