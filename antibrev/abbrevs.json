@@ -2385,5 +2385,11 @@
     "U": "unit",
     "KVGH": "Kaohsiung Veterans General Hospital",
     "KMHK": "Kaohsiung Municipal Hsiaokang Hospital",
-    "Afib": "atrial fibrillation"
+    "Afib": "atrial fibrillation",
+    "Af": "atrial fibrillation",
+    "HFpEF": "heart failure with preserved ejection fraction",
+    "HFrEF": "heart failure with reduced ejection fraction",
+    "VPC": "ventricular premature contraction",
+    "VPCs": "ventricular premature contractions",
+    "APCs": "atrial premature contractions"
 }
