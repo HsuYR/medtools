@@ -1,4 +1,15 @@
 {
+    "U": "unit",
+    "KVGH": "Kaohsiung Veterans General Hospital",
+    "KMHK": "Kaohsiung Municipal Hsiaokang Hospital",
+    "Afib": "atrial fibrillation",
+    "Af": "atrial fibrillation",
+    "HFpEF": "heart failure with preserved ejection fraction",
+    "HFrEF": "heart failure with reduced ejection fraction",
+    "VPC": "ventricular premature contraction",
+    "VPCs": "ventricular premature contractions",
+    "APCs": "atrial premature contractions",
+
     "%pred": "percent of predicted value",
     "+C": "with contrast",
     "3D-CRT": "three dimentional conformal radiation therapy",
@@ -2380,16 +2391,5 @@
     "VDU": "visual display unit",
     "VE": "minute ventilation",
     "VEB": "ventricular ectopic beats",
-    "VED": "vacuum extraction delivery",
-
-    "U": "unit",
-    "KVGH": "Kaohsiung Veterans General Hospital",
-    "KMHK": "Kaohsiung Municipal Hsiaokang Hospital",
-    "Afib": "atrial fibrillation",
-    "Af": "atrial fibrillation",
-    "HFpEF": "heart failure with preserved ejection fraction",
-    "HFrEF": "heart failure with reduced ejection fraction",
-    "VPC": "ventricular premature contraction",
-    "VPCs": "ventricular premature contractions",
-    "APCs": "atrial premature contractions"
+    "VED": "vacuum extraction delivery"
 }
