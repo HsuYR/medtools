@@ -17,7 +17,7 @@ request.onload = ()=>{
     abbrevs = new Map(abbrevs);
 
     let note = document.querySelector('#cke_1_contents iframe').contentDocument;
-    let paragraphs = note.querySelectorAll('p[style="font-family: Courier New;"]');
+    let paragraphs = note.querySelectorAll('p');
 
     paragraphs.forEach(e => {
     console.log(e);
