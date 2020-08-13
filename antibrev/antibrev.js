@@ -22,7 +22,7 @@ request.onload = ()=>{
     paragraphs.forEach(e => {
     console.log(e);
     for (let [re, fullName] of abbrevs) {
-        e.textContent = e.textContent.replace(re, `$1${fullName}$2`);
+        e.innerHTML = e.innerHTML.replace(re, `$1${fullName}$2`);
     }
     });
 };
