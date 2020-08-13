@@ -20,9 +20,9 @@ request.onload = ()=>{
     let paragraphs = note.querySelectorAll('p[style="font-family: Courier New;"]');
 
     paragraphs.forEach(e => {
+    console.log(e);
     for (let [re, fullName] of abbrevs) {
         e.textContent = e.textContent.replace(re, `$1${fullName}$2`);
-
     }
     });
 };
