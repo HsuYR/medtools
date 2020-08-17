@@ -830,7 +830,7 @@
     "FVC": "forced vital capacity",
     "Fx": "fracture",
     "fx": "fracture",
-    "g": "gram",
+    "-- g -- 字母常見易誤用，予以刪除": "gram",
     "G.P.": "gutta percha",
     "G.P.A": "gravida para abortion",
     "G/S": "glucose in saline",
